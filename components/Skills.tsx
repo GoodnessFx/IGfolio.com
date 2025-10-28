@@ -1,4 +1,4 @@
-import { motion, useInView } from "motion/react";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Smartphone, Database, Zap, Layers, Globe } from "lucide-react";
 
@@ -6,17 +6,17 @@ const skills = [
   {
     icon: Code2,
     title: "Frontend Development",
-    description: "React, Next.js, TypeScript, Tailwind CSS",
+    description: "JavaScript, TypeScript, React.js, React Native",
+  },
+  {
+    icon: Database,
+    title: "Backend & Blockchain",
+    description: "Node.js, Solidity, Ethers.js, Hardhat",
   },
   {
     icon: Smartphone,
     title: "Mobile Development",
-    description: "React Native, iOS, Android",
-  },
-  {
-    icon: Database,
-    title: "Backend Development",
-    description: "Node.js, APIs, Database Design",
+    description: "React Native, iOS, Android, WAGMI + RainbowKit",
   },
   {
     icon: Zap,
@@ -30,8 +30,8 @@ const skills = [
   },
   {
     icon: Globe,
-    title: "Web Technologies",
-    description: "Progressive Web Apps, SEO",
+    title: "Soft Skills",
+    description: "Collaboration, Research, Teamwork, Ownership, Critical Thinking, Learning Mindset",
   },
 ];
 

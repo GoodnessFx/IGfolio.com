@@ -1,6 +1,7 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ArrowDown, Download, Linkedin, Github, Mail } from "lucide-react";
 import { Button } from "./ui/button";
+import jsPDF from "jspdf";
 
 // X (Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
@@ -19,25 +20,90 @@ export function Hero() {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const downloadResume = () => {
-    // Create a dummy resume download
-    const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Update this path with your actual resume
-    link.download = 'Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const downloadResume = async () => {
+    try {
+      // Try jpg, then png; if neither available, fall back to static PDF
+      const tryPaths = [
+        "/resume.jpg",
+        "/resume.jpeg",
+        "/resume.png",
+      ];
+
+      let imgPath: string | null = null;
+      for (const p of tryPaths) {
+        const res = await fetch(p, { method: "HEAD" });
+        if (res.ok) {
+          imgPath = p;
+          break;
+        }
+      }
+
+      if (!imgPath) {
+        // Fallback: download existing PDF
+        const a = document.createElement("a");
+        a.href = "/resume.pdf";
+        a.download = "IG Cv.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        return;
+      }
+
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = imgPath;
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+
+      // Create PDF sized to the image aspect on A4 portrait
+      const pdf = new jsPDF({ unit: "pt", format: "a4" });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      const imgCanvas = document.createElement("canvas");
+      imgCanvas.width = img.width;
+      imgCanvas.height = img.height;
+      const ctx = imgCanvas.getContext("2d");
+      if (ctx) ctx.drawImage(img, 0, 0);
+      const dataUrl = imgCanvas.toDataURL("image/jpeg", 0.95);
+
+      // Fit image within page while preserving aspect ratio
+      const imgAspect = img.width / img.height;
+      const pageAspect = pageWidth / pageHeight;
+      let renderWidth = pageWidth;
+      let renderHeight = pageHeight;
+      if (imgAspect > pageAspect) {
+        renderHeight = renderWidth / imgAspect;
+      } else {
+        renderWidth = renderHeight * imgAspect;
+      }
+      const x = (pageWidth - renderWidth) / 2;
+      const y = (pageHeight - renderHeight) / 2;
+
+      pdf.addImage(dataUrl, "JPEG", x, y, renderWidth, renderHeight);
+      pdf.save("IG Cv.pdf");
+    } catch (e) {
+      // On any error, gracefully fall back to static PDF
+      const a = document.createElement("a");
+      a.href = "/resume.pdf";
+      a.download = "IG Cv.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
   };
 
   const socials = [
     { icon: Github, href: "https://github.com", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: XIcon, href: "https://x.com", label: "X (Twitter)" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+    { icon: XIcon, href: "https://x.com/IGoodnessIyamah", label: "X (Twitter)" },
+    { icon: Mail, href: "goodnessiyamah1@gmail.com", label: "Email" },
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 pt-20 sm:pt-0">
+    <section className="min-h-screen flex items-center justify-start relative px-4 sm:px-6 pt-12">
       <div className="max-w-5xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +116,7 @@ export function Hero() {
             transition={{ delay: 0.5 }}
             className="text-xs sm:text-sm text-zinc-500 mb-3 sm:mb-4 tracking-widest uppercase"
           >
-            Mobile & Web Developer
+            Mobile & Web App Developer
           </motion.div>
           
           <div className="space-y-1 sm:space-y-2 mb-5 sm:mb-8">
@@ -60,7 +126,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]"
             >
-              Building digital
+              With a Passion to build
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -68,7 +134,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]"
             >
-              experiences that
+              
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -76,7 +142,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] bg-gradient-to-r from-white to-zinc-500 bg-clip-text text-transparent"
             >
-              matter.
+              what is needed
             </motion.h1>
           </div>
 
@@ -84,9 +150,9 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mb-6 sm:mb-8"
+            className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mb-3 sm:mb-4"
           >
-            Crafting seamless mobile and web solutions with precision, performance, and purpose.
+            Developing seamless mobile and web solutions with precision, performance, and purpose  <br></br>  ...to see how much of a footprint I can leave behind on Earth before I leave.
           </motion.p>
 
           {/* Social Icons */}
@@ -122,9 +188,10 @@ export function Hero() {
           >
             <Button
               onClick={downloadResume}
-              className="bg-white text-zinc-950 hover:bg-zinc-200 h-11 sm:h-12 px-6 sm:px-8"
+              size="sm"
+              className="bg-white text-zinc-950 hover:bg-zinc-200"
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-4 h-4" />
               Resume
             </Button>
           </motion.div>

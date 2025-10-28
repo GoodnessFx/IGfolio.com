@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export function Navigation() {
@@ -34,7 +34,7 @@ export function Navigation() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="tracking-tight">Portfolio</span>
+          <span className="tracking-tight">IG Portfolio</span>
         </motion.div>
         
         {/* Desktop Navigation */}

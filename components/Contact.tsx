@@ -1,4 +1,4 @@
-import { motion, useInView } from "motion/react";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Linkedin, Github, Send } from "lucide-react";
 import { Button } from "./ui/button";
@@ -148,7 +148,7 @@ export function Contact() {
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
                     <XIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <span className="text-sm sm:text-base">X (Twitter)</span>
+                  <span className="text-sm sm:text-base">X</span>
                 </motion.a>
               </div>
             </div>
