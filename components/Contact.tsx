@@ -1,9 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+ 
 
 // X (Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
@@ -25,12 +26,9 @@ export function Contact() {
     email: "",
     message: "",
   });
+  
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-  };
+  // Using FormSubmit POST action above for direct delivery; no JS interception.
 
   return (
     <section id="contact" className="min-h-screen flex items-center px-4 sm:px-6 py-20 sm:py-32">
@@ -59,30 +57,44 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form 
+              action="https://formsubmit.co/goodnessiyamah1@gmail.com"
+              method="POST"
+              className="space-y-4 sm:space-y-6"
+            >
+              {/* FormSubmit settings */}
+              <input type="hidden" name="_subject" value="Portfolio Contact" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="box" />
               <div>
                 <Input
+                  name="name"
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 h-11 sm:h-12"
+                  required
                 />
               </div>
               <div>
                 <Input
+                  name="email"
                   type="email"
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 h-11 sm:h-12"
+                  required
                 />
               </div>
               <div>
                 <Textarea
+                  name="message"
                   placeholder="Tell me about your project..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 min-h-[120px] sm:min-h-[150px] resize-none"
+                  required
                 />
               </div>
               <Button
@@ -105,14 +117,14 @@ export function Contact() {
               <h3 className="text-xl sm:text-2xl mb-6">Connect with me</h3>
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:hello@example.com"
+                  href="mailto:goodnessiyamah1@gmail.com"
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 sm:gap-4 text-zinc-400 hover:text-white transition-colors group"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
                     <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <span className="text-sm sm:text-base break-all">hello@example.com</span>
+                  <span className="text-sm sm:text-base break-all">goodnessiyamah1@gmail.com</span>
                 </motion.a>
                 <motion.a
                   href="https://linkedin.com"

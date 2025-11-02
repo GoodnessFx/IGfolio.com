@@ -14,6 +14,20 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "GatePass",
+    description: "Decentralized event ticketing platform with NFT-based tickets, built-in fraud protection, and instant settlement on Polygon testnet.",
+    tags: ["React", "Blockchain", "NFT"],
+    gradient: "from-rose-500/20 to-pink-500/20",
+    demo: "https://stupendous-ganache-69d0b6.netlify.app/",
+  },
+  {
+    title: "TraceDog",
+    description: "AI Alpha Hunter - Real-time trading opportunities and market insights from verified sources with risk analysis.",
+    tags: ["React", "AI", "Trading"],
+    gradient: "from-emerald-500/20 to-teal-500/20",
+    demo: "https://legendary-tapioca-a43e76.netlify.app/",
+  },
+  {
     title: "Ruguard",
     description: "Security and risk management intelligence suite.",
     tags: ["React", "Tailwind"],
@@ -51,7 +65,7 @@ const projects: Project[] = [
     demo: "https://soft-taffy-8ff284.netlify.app/",
   },
   {
-    title: "LIinkUp",
+    title: "LinkUp",
     description: "Social directory and connection hub.",
     tags: ["React", "Tailwind"],
     gradient: "from-indigo-500/20 to-blue-500/20",
@@ -70,13 +84,6 @@ const projects: Project[] = [
     tags: ["React", "Tailwind"],
     gradient: "from-orange-500/20 to-red-500/20",
     demo: "https://animated-fudge-b170c4.netlify.app/",
-  },
-  {
-    title: "PassMint",
-    description: "Credential and pass minting mockups.",
-    tags: ["React", "Tailwind"],
-    gradient: "from-rose-500/20 to-pink-500/20",
-    demo: "https://stupendous-ganache-69d0b6.netlify.app/",
   },
   {
     title: "UpNext",
