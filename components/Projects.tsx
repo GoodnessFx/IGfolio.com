@@ -14,6 +14,13 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Daniel Adeboye Portfolio",
+    description: "Personal portfolio and site showcasing projects and case studies.",
+    tags: ["React", "Tailwind"],
+    gradient: "from-slate-700/40 to-zinc-900/40",
+    demo: "https://aquamarine-melomakarona-0bc1a4.netlify.app/",
+  },
+  {
     title: "GatePass",
     description: "Decentralized event ticketing platform with NFT-based tickets, built-in fraud protection, and instant settlement on Polygon testnet.",
     tags: ["React", "Blockchain", "NFT"],

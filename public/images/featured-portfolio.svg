@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="20" fill="#0f1720" />
+  <defs>
+    <radialGradient id="g" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0%" stop-color="#3b4250" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0b0b0b" stop-opacity="1" />
+    </radialGradient>
+  </defs>
+  <rect x="40" y="40" width="1120" height="720" rx="16" fill="url(#g)" />
+  <g transform="translate(120,120)">
+    <circle cx="220" cy="120" r="90" fill="#0f1720" stroke="#1f2937" stroke-width="6" />
+    <g transform="translate(140,40)">
+      <ellipse cx="120" cy="120" rx="90" ry="120" fill="#2a2f33" />
+      <ellipse cx="120" cy="120" rx="60" ry="80" fill="#15181a" opacity="0.4" />
+    </g>
+    <rect x="320" y="40" width="620" height="360" rx="12" fill="#111214" opacity="0.5" />
+    <g transform="translate(360,120)">
+      <rect width="540" height="240" rx="8" fill="rgba(255,255,255,0.02)" />
+      <circle cx="270" cy="120" r="70" fill="rgba(255,255,255,0.02)" />
+    </g>
+  </g>
+</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#4b5563" stop-opacity="0.18"/>
+      <stop offset="50%" stop-color="#111827" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="1600" height="900" rx="20" fill="url(#g)" />
+  <!-- subtle vignette -->
+  <ellipse cx="800" cy="450" rx="300" ry="220" fill="#ffffff" opacity="0.02" />
+</svg>
