@@ -1,6 +1,7 @@
 # IGFOLIO — Goodness Iyamah (IG)
 
-Welcome to my professional showcase. I am a **Smart Contract Engineer and Full-Stack Web3 Developer** dedicated to building high-performance, secure, and production-grade decentralized applications. 
+Welcome to my work of art.
+ I am a **Smart Contract Engineer and Full-Stack Web3 Developer** dedicated to building high-performance, secure, and production-grade decentralized applications. 
 
 ## 👤 About Me
 I specialize in the end-to-end development of Web3 solutions, from zero-day Solidity contracts to complex frontend interfaces. My approach is driven by a "security-first" mindset, ensuring every protocol is built on a foundation of integrity and performance.
