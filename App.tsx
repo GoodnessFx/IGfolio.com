@@ -2,29 +2,32 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
+import { Competencies } from "./components/Competencies";
 import { Contact } from "./components/Contact";
 import { Navigation } from "./components/Navigation";
-import Splash from "./components/Splash";
-import { useEffect, useState } from "react";
+import { Footer } from "./components/Footer";
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShowSplash(false), 3000);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (showSplash) return <Splash duration={3000} />;
-
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-[var(--accent)] selection:text-white overflow-x-hidden">
+      {/* Background Noise Overlay */}
+      <div className="bg-noise" />
+      
+      {/* Navigation */}
       <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+
+      {/* Main Content */}
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Competencies />
+        <Contact />
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

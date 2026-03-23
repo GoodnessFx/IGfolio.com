@@ -1,15 +1,13 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
- 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, Send, CheckCircle2, XCircle, Loader2, Github, Linkedin } from "lucide-react";
 
-// X (Twitter) Icon Component
+// X (formerly Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
+    width="16"
+    height="16"
     fill="currentColor"
     className={className}
     aria-hidden="true"
@@ -19,168 +17,226 @@ const XIcon = ({ className }: { className?: string }) => (
 );
 
 export function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  // Using FormSubmit POST action above for direct delivery; no JS interception.
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/goodnessiyamah1@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ 
+          name, email, message, 
+          _subject: "New message from IG Portfolio", 
+          _captcha: "false" 
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setSubmitStatus("error");
+        setTimeout(() => setSubmitStatus("idle"), 2000);
+      }
+    } catch {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus("idle"), 2000);
+    }
+    setSubmitting(false);
+  };
+
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/GoodnessFx", label: "GitHub" },
+    { icon: XIcon, href: "https://x.com/IGoodnessIyamah", label: "X" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:goodnessiyamah1@gmail.com", label: "Email" },
+  ];
+
+  const roles = [
+    "Smart Contract Engineering",
+    "Full-Stack Web3",
+    "Web / Mobile App Development",
+    "Product Building",
+    "Developer Advocacy",
+  ];
 
   return (
-    <section id="contact" className="min-h-screen flex items-center px-4 sm:px-6 py-20 sm:py-32">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="contact" className="py-24 bg-[var(--bg-primary)] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-16"
+          className="mb-16"
         >
-          <div className="text-xs sm:text-sm text-zinc-500 mb-4 tracking-widest uppercase">
-            Get In Touch
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">
-            Let's work together
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl">
-            Have a project in mind? Let's discuss how we can bring your ideas to life.
+          <span className="section-label">Contact</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Let's build something remarkable.</h2>
+          <p className="mt-4 text-[var(--text-secondary)] text-lg font-dm-sans">
+            Available for remote contracts, full-time roles, and protocol collaborations.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Left Side - Info */}
+          <div className="lg:col-span-5 space-y-12">
+            <div className="space-y-8">
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-[var(--bg-card)] border border-[rgba(255,255,255,0.08)] rounded-lg flex items-center justify-center text-white group-hover:border-[var(--accent)] transition-colors">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] mb-1">Email Me</p>
+                  <a href="mailto:goodnessiyamah1@gmail.com" className="text-lg font-bold text-white hover:text-[var(--accent)] transition-colors font-space-grotesk">
+                    goodnessiyamah1@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-[var(--bg-card)] border border-[rgba(255,255,255,0.08)] rounded-lg flex items-center justify-center text-white group-hover:border-[var(--accent)] transition-colors">
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] mb-1">Location</p>
+                  <p className="text-lg font-bold text-white font-space-grotesk">Lagos, Nigeria · Remote-First</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8 space-y-6">
+              <p className="text-[10px] font-bold text-white uppercase tracking-widest font-mono">OPEN TO ROLES IN:</p>
+              <div className="flex flex-wrap gap-2">
+                {roles.map((role) => (
+                  <span key={role} className="px-3 py-1.5 bg-[var(--bg-card)] border border-[rgba(255,255,255,0.05)] rounded text-xs text-[var(--text-secondary)] font-dm-sans">
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-8 flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-white hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all duration-300 group"
+                  aria-label={social.label}
+                >
+                  <social.icon />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side - Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:col-span-7 bg-[var(--bg-card)] border border-[rgba(255,255,255,0.07)] p-8 md:p-10 rounded-xl relative"
           >
-            <form 
-              action="https://formsubmit.co/goodnessiyamah1@gmail.com"
-              method="POST"
-              className="space-y-4 sm:space-y-6"
-            >
-              {/* FormSubmit settings */}
-              <input type="hidden" name="_subject" value="Portfolio Contact" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="box" />
-              <div>
-                <Input
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 h-11 sm:h-12"
-                  required
-                />
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] ml-1">Your Name</label>
+                  <input
+                    required
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Tobi"
+                    className="w-full bg-[var(--bg-primary)] border border-[rgba(255,255,255,0.08)] rounded-lg px-5 py-4 text-white focus:outline-none focus:border-[var(--accent)] transition-colors font-dm-sans"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] ml-1">Your Email</label>
+                  <input
+                    required
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="tobionatade@example.com"
+                    className="w-full bg-[var(--bg-primary)] border border-[rgba(255,255,255,0.08)] rounded-lg px-5 py-4 text-white focus:outline-none focus:border-[var(--accent)] transition-colors font-dm-sans"
+                  />
+                </div>
               </div>
-              <div>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="your.email@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 h-11 sm:h-12"
+              <div className="space-y-2">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] ml-1">Message</label>
+                <textarea
                   required
-                />
-              </div>
-              <div>
-                <Textarea
-                  name="message"
+                  rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell me about your project..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-zinc-900 border-zinc-800 focus:border-zinc-700 min-h-[120px] sm:min-h-[150px] resize-none"
-                  required
+                  className="w-full bg-[var(--bg-primary)] border border-[rgba(255,255,255,0.08)] rounded-lg px-5 py-4 text-white focus:outline-none focus:border-[var(--accent)] transition-colors resize-none font-dm-sans"
                 />
               </div>
-              <Button
-                type="submit"
-                className="w-full h-11 sm:h-12 bg-white text-zinc-950 hover:bg-zinc-200"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                Send Message
-              </Button>
+
+              <div className="relative">
+                <AnimatePresence>
+                  {submitStatus === "success" && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="text-sm text-green-500 mb-4 font-dm-sans text-center"
+                    >
+                      Your message has been delivered to IG 🚀
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+
+                <button
+                  disabled={submitting || submitStatus === "success"}
+                  type="submit"
+                  className={`w-full py-5 rounded-lg font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 font-space-grotesk ${
+                    submitStatus === "success"
+                      ? "bg-[rgba(34,197,94,0.1)] text-green-500 border border-green-500/50"
+                      : submitting 
+                      ? "bg-[var(--bg-secondary)] text-[var(--text-dim)] cursor-not-allowed" 
+                      : submitStatus === "error"
+                      ? "bg-red-500/20 text-red-500 border border-red-500/50"
+                      : "btn-ghost"
+                  }`}
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="animate-spin" size={24} />
+                      Sending...
+                    </>
+                  ) : submitStatus === "success" ? (
+                    <>
+                      <CheckCircle2 size={24} />
+                      ✅ Message sent to IG
+                    </>
+                  ) : submitStatus === "error" ? (
+                    <>
+                      <XCircle size={24} />
+                      ❌ Failed — try again
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </div>
             </form>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-xl sm:text-2xl mb-6">Connect with me</h3>
-              <div className="space-y-4">
-                <motion.a
-                  href="mailto:goodnessiyamah1@gmail.com"
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 sm:gap-4 text-zinc-400 hover:text-white transition-colors group"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base break-all">goodnessiyamah1@gmail.com</span>
-                </motion.a>
-                <motion.a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 sm:gap-4 text-zinc-400 hover:text-white transition-colors group"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
-                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base">LinkedIn</span>
-                </motion.a>
-                <motion.a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 sm:gap-4 text-zinc-400 hover:text-white transition-colors group"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
-                    <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base">GitHub</span>
-                </motion.a>
-                <motion.a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 sm:gap-4 text-zinc-400 hover:text-white transition-colors group"
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
-                    <XIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                  <span className="text-sm sm:text-base">X</span>
-                </motion.a>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-zinc-800">
-              <p className="text-zinc-500 text-xs sm:text-sm">
-                Based worldwide, available for remote work and collaboration.
-              </p>
-            </div>
-          </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 sm:mt-32 pt-8 border-t border-zinc-800 text-center text-zinc-500 text-xs sm:text-sm"
-        >
-          <p>© 2025 All rights reserved.</p>
-        </motion.div>
       </div>
     </section>
   );

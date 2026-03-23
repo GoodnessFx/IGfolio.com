@@ -1,12 +1,14 @@
-import { motion } from "framer-motion";
-import { ArrowDown, Download, Linkedin, Github, Mail } from "lucide-react";
-import { Button } from "./ui/button";
-import jsPDF from "jspdf";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowDown, Download, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { useEffect, useState, useRef, useMemo } from "react";
+import { projects } from "../data/projects";
 
-// X (Twitter) Icon Component
+// X (formerly Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
+    width="16"
+    height="16"
     fill="currentColor"
     className={className}
     aria-hidden="true"
@@ -15,203 +17,166 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export function Hero() {
-  const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-  };
+const Counter = ({ value, label }: { value: string; label: string }) => {
+  const [count, setCount] = useState(0);
+  const target = parseInt(value);
+  const ref = useRef(null);
 
-  const downloadResume = async () => {
-    try {
-      // Try jpg, then png; if neither available, fall back to static PDF
-      const tryPaths = [
-        "/resume.jpg",
-        "/resume.jpeg",
-        "/resume.png",
-      ];
-
-      let imgPath: string | null = null;
-      for (const p of tryPaths) {
-        const res = await fetch(p, { method: "HEAD" });
-        if (res.ok) {
-          imgPath = p;
-          break;
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          let start = 0;
+          const duration = 2000;
+          const increment = target / (duration / 16);
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(start));
+            }
+          }, 16);
         }
-      }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target]);
 
-      if (!imgPath) {
-        // Fallback: download existing PDF
-        const a = document.createElement("a");
-        a.href = "/resume.pdf";
-        a.download = "IG Cv.pdf";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        return;
-      }
+  return (
+    <div ref={ref} className="flex flex-col">
+      <span className="text-3xl md:text-4xl font-bold text-white font-space-grotesk">
+        {count}{value.includes("+") ? "+" : value.includes("%") ? "%" : ""}
+      </span>
+      <span className="text-[11px] uppercase tracking-widest text-[var(--text-dim)] mt-1 font-dm-sans">
+        {label}
+      </span>
+    </div>
+  );
+};
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = imgPath;
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-      });
+export function Hero() {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-      // Create PDF sized to the image aspect on A4 portrait
-      const pdf = new jsPDF({ unit: "pt", format: "a4" });
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
+  const projectsCount = projects.length;
+  const chainsCount = useMemo(() => {
+    const allChains = projects.flatMap(p => p.chains || []);
+    return new Set(allChains).size || 3; // Fallback to 3 if none found
+  }, []);
 
-      const imgCanvas = document.createElement("canvas");
-      imgCanvas.width = img.width;
-      imgCanvas.height = img.height;
-      const ctx = imgCanvas.getContext("2d");
-      if (ctx) ctx.drawImage(img, 0, 0);
-      const dataUrl = imgCanvas.toDataURL("image/jpeg", 0.95);
+  const headline = "With a Passion to build what is needed";
+  const words = headline.split(" ");
 
-      // Fit image within page while preserving aspect ratio
-      const imgAspect = img.width / img.height;
-      const pageAspect = pageWidth / pageHeight;
-      let renderWidth = pageWidth;
-      let renderHeight = pageHeight;
-      if (imgAspect > pageAspect) {
-        renderHeight = renderWidth / imgAspect;
-      } else {
-        renderWidth = renderHeight * imgAspect;
-      }
-      const x = (pageWidth - renderWidth) / 2;
-      const y = (pageHeight - renderHeight) / 2;
-
-      pdf.addImage(dataUrl, "JPEG", x, y, renderWidth, renderHeight);
-      pdf.save("IG Cv.pdf");
-    } catch (e) {
-      // On any error, gracefully fall back to static PDF
-      const a = document.createElement("a");
-      a.href = "/resume.pdf";
-      a.download = "IG Cv.pdf";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-  };
-
-  const socials = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/GoodnessFx", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: XIcon, href: "https://x.com/IGoodnessIyamah", label: "X (Twitter)" },
-    { icon: Mail, href: "goodnessiyamah1@gmail.com", label: "Email" },
+    { icon: XIcon, href: "https://x.com/IGoodnessIyamah", label: "X" },
+    { icon: Mail, href: "mailto:goodnessiyamah1@gmail.com", label: "Email" },
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-start relative px-4 sm:px-6 pt-12">
-      <div className="max-w-5xl w-full">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[var(--bg-primary)]">
+      <div className="absolute inset-0 z-0 bg-noise pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col items-start">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-xs sm:text-sm text-zinc-500 mb-3 sm:mb-4 tracking-widest uppercase"
-          >
-            Mobile & Web App Developer
-          </motion.div>
-          
-          <div className="space-y-1 sm:space-y-2 mb-5 sm:mb-8">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]"
-            >
-              With a Passion to build
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1]"
-            >
-              
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] bg-gradient-to-r from-white to-zinc-500 bg-clip-text text-transparent"
-            >
-              what is needed
-            </motion.h1>
-          </div>
+          <span className="inline-block text-[11px] font-dm-sans tracking-[0.15em] text-[var(--accent)] mb-6 uppercase">
+            Smart Contract Engineer · EVM · Solidity · DeFi
+          </span>
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl mb-3 sm:mb-4"
-          >
-            Developing seamless mobile and web solutions with precision, performance, and purpose  <br></br>  ...to see how much of a footprint I can leave behind on Earth before I leave.
-          </motion.p>
-
-          {/* Social Icons */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.05 }}
-            className="flex items-center gap-3 mb-5 sm:mb-6"
-          >
-            {socials.map((social, index) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.1 + index * 0.05 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-700 transition-all duration-300"
-                aria-label={social.label}
-              >
-                <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Resume Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3 }}
-          >
-            <Button
-              onClick={downloadResume}
-              size="sm"
-              className="bg-white text-zinc-950 hover:bg-zinc-200"
+        <h1 className="text-[clamp(42px,6.5vw,82px)] leading-[1.1] mb-8 font-space-grotesk font-bold text-white max-w-4xl">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+              className={`inline-block mr-[0.3em] ${
+                word.toLowerCase() === "needed" ? "text-[var(--accent)]" : "text-white"
+              }`}
             >
-              <Download className="w-4 h-4" />
-              Resume
-            </Button>
-          </motion.div>
+              {word}
+            </motion.span>
+          ))}
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="text-[17px] text-[var(--text-secondary)] max-w-[500px] mb-12 leading-relaxed font-dm-sans"
+        >
+          Developing seamless Web3 solutions with precision, performance, and purpose — to see how much of a footprint I can leave behind on Earth before I leave.
+        </motion.p>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12 w-full max-w-2xl">
+          <Counter value={`${projectsCount}+`} label="Projects Shipped" />
+          <Counter value={`${chainsCount}+`} label="Chains Deployed" />
+          <Counter value="6" label="Industries Disrupted" />
+          <Counter value="100%" label="Security-First" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="flex flex-wrap gap-4 mb-12"
+        >
+          <a href="/IG_Cv.pdf" download className="btn-ghost">
+            <Download size={18} />
+            Download Resume
+          </a>
+          <button
+            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            className="btn-ghost"
+          >
+            View My Work
+            <ArrowDown size={18} />
+          </button>
+        </motion.div>
+
+        {/* Socials */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4 }}
+          className="flex items-center gap-4"
+        >
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.12)] flex items-center justify-center text-white hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all duration-300 group"
+              aria-label={social.label}
+            >
+              <social.icon />
+            </a>
+          ))}
         </motion.div>
       </div>
 
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        onClick={scrollToAbout}
-        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2"
+      {/* Scroll Indicator */}
+      <motion.div
+        style={{ opacity }}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white opacity-40 flex flex-col items-center cursor-pointer"
+        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-zinc-500" />
-        </motion.div>
-      </motion.button>
+        <ChevronDown size={24} />
+      </motion.div>
     </section>
   );
 }
