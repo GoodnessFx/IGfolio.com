@@ -113,9 +113,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="text-[17px] text-[var(--text-secondary)] max-w-[500px] mb-12 leading-relaxed font-dm-sans"
+          className="text-[17px] text-[var(--text-secondary)] max-w-[600px] mb-12 leading-relaxed font-dm-sans"
         >
-          Developing seamless Web3 solutions with precision, performance, and purpose — to see how much of a footprint I can leave behind on Earth before I leave.
+          Developing seamless Web3 solutions with precision, performance, and purpose — 
+          <span className="block mt-4 italic text-[var(--text-primary)]">
+            "To see how much of a footprint I can leave behind on Earth before I leave."
+          </span>
         </motion.p>
 
         {/* Stats */}

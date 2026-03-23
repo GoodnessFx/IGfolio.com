@@ -1,69 +1,23 @@
-# IGFOLIO — Smart Contract Engineer Portfolio
+# IGFOLIO — Goodness Iyamah (IG)
 
-An elite, production-ready Web3 portfolio built with React 18, Vite, and Tailwind CSS v4. Designed for Goodness Iyamah (IG), specializing in Smart Contract Engineering, DeFi protocols, and full-stack Web3 development.
+Welcome to my professional showcase. I am a **Smart Contract Engineer and Full-Stack Web3 Developer** dedicated to building high-performance, secure, and production-grade decentralized applications. 
 
-## 🚀 Tech Stack
+## 👤 About Me
+I specialize in the end-to-end development of Web3 solutions, from zero-day Solidity contracts to complex frontend interfaces. My approach is driven by a "security-first" mindset, ensuring every protocol is built on a foundation of integrity and performance.
 
-- **Framework:** React 18 + Vite
-- **Styling:** Tailwind CSS v4 (Native CSS-first theme configuration)
-- **Animations:** Framer Motion (Scroll reveals, staggered entries, character-split headlines)
-- **Icons:** Lucide React + Custom SVG Brand Icons (𝕏, etc.)
-- **Fonts:** Space Grotesk (Headlines), DM Sans (Body), JetBrains Mono (Terminal/Code)
-- **Form Handling:** AJAX-based contact form (formsubmit.co) with zero redirects
+## 🚀 What's in the App?
 
-## 📂 Project Structure
+### **The Hero Section**
+A bold introduction to my work, featuring real-time stats that track my growth, including the total number of projects shipped and the various blockchain networks I've deployed on. 
 
-```text
-├── components/
-│   ├── ui/                # Shared UI primitives (shadcn-inspired)
-│   ├── About.tsx          # Professional bio & image card
-│   ├── Competencies.tsx   # Terminal-style technical panel grid
-│   ├── Contact.tsx        # AJAX-powered contact form
-│   ├── Footer.tsx         # Minimal footer with dynamic year
-│   ├── Hero.tsx           # Headline, dynamic stats & CTA
-│   ├── Navigation.tsx     # Sticky glassmorphism header
-│   ├── Projects.tsx       # Multi-grid project showcase
-│   ├── Skills.tsx         # Categorized technical stack
-│   └── Splash.tsx         # Terminal-style boot loader
-├── data/
-│   └── projects.ts        # Centralized source of truth for all projects
-├── public/
-│   └── images/            # Assets (ig.png, etc.)
-├── App.tsx                # Application shell with splash logic
-├── index.css              # Tailwind v4 theme & global utilities
-└── main.tsx               # React entry point
-```
+### **The Project Showcase**
+A comprehensive gallery of my professional journey. From DeFi escrow systems and NFT ticketing platforms to AI-powered trading intelligence and cross-border payment routers. Each project is a testament to my ability to ship functional, market-ready products.
 
-## ✨ Core Features
+### **Technical Competencies**
+A deep dive into my core attributes and technical strengths, presented through a minimal, security-focused interface. This section outlines my expertise in DeFi protocol security, Layer 2 infrastructure, and AI agent systems.
 
-### 1. Dynamic Stat Engine
-The Hero section features a dynamic counting engine that calculates real-time stats (Projects Shipped, Chains Deployed) directly from the project data array.
+### **Contact & Collaboration**
+A seamless way to connect for inquiries, collaborations, or technical consultations. My contact form is optimized for a smooth user experience, ensuring direct communication without any interruptions.
 
-### 2. Terminal Aesthetic
-Incorporates a "Security-First" aesthetic using terminal-style cards and code-inspired typography, reflecting a deep focus on protocol security and formal verification.
-
-### 3. Smooth Transitions
-Utilizes Framer Motion for high-end scroll animations, staggered grid entry points, and a seamless splash screen transition.
-
-### 4. Optimized Asset Management
-Centralized project data allows for easy updates across the site, ensuring that new deployments are reflected immediately in both the stats and the showcase.
-
-## 🛠️ Local Development
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/GoodnessFx/IGfolio.com.git
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-## 📄 License
+---
 © 2026 Goodness Iyamah. All rights reserved.
