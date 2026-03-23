@@ -135,7 +135,7 @@ export function Hero() {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="flex flex-wrap gap-4 mb-12"
         >
-          <a href="/IG_Cv.pdf" download className="btn-ghost">
+          <a href="/resume.pdf" download="Goodness_Iyamah_Resume.pdf" className="btn-ghost">
             <Download size={18} />
             Download Resume
           </a>
