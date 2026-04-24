@@ -89,7 +89,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-[11px] font-dm-sans tracking-[0.15em] text-[var(--accent)] mb-6 uppercase">
-            Smart Contract Engineer · EVM · Solidity · DeFi
+            Smart Contract Developer · Product Builder · EVM · Solidity · DeFi
           </span>
         </motion.div>
 
@@ -115,7 +115,7 @@ export function Hero() {
           transition={{ delay: 1, duration: 0.8 }}
           className="text-[17px] text-[var(--text-secondary)] max-w-[600px] mb-12 leading-relaxed font-dm-sans"
         >
-          Developing seamless Web3 solutions with precision, performance, and purpose — 
+          Developing seamless Web3 solutions with precision, performance, and purpose 
           <span className="block mt-4 italic text-[var(--text-primary)]">
             "To see how much of a footprint I can leave behind on Earth before I leave."
           </span>
