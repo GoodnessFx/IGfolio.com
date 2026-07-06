@@ -68,9 +68,6 @@ export function Hero() {
     return new Set(allChains).size || 3; // Fallback to 3 if none found
   }, []);
 
-  const headline = "With a Passion to build what is needed";
-  const words = headline.split(" ");
-
   const socialLinks = [
     { icon: Github, href: "https://github.com/GoodnessFx", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
@@ -89,25 +86,22 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block text-[11px] font-dm-sans tracking-[0.15em] text-[var(--accent)] mb-6 uppercase">
-            Smart Contract Developer · Product Builder · EVM · Solidity · DeFi
+            Website Development · Product Engineering · Smart Contracts · Web3
           </span>
         </motion.div>
 
-        <h1 className="text-[clamp(42px,6.5vw,82px)] leading-[1.1] mb-8 font-space-grotesk font-bold text-white max-w-4xl">
-          {words.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-              className={`inline-block mr-[0.3em] ${
-                word.toLowerCase() === "needed" ? "text-[var(--accent)]" : "text-white"
-              }`}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+          className="text-[clamp(42px,6.5vw,82px)] leading-[1.1] mb-8 font-space-grotesk font-bold text-white max-w-5xl"
+        >
+          <span className="text-[var(--accent)]">Website Developer</span>
+          <span className="text-[var(--text-dim)]"> | </span>
+          <span>Smart Contract Engineer (EVM/Solidity)</span>
+          <span className="text-[var(--text-dim)]"> | </span>
+          <span>Web3 Builder</span>
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -115,7 +109,7 @@ export function Hero() {
           transition={{ delay: 1, duration: 0.8 }}
           className="text-[17px] text-[var(--text-secondary)] max-w-[600px] mb-12 leading-relaxed font-dm-sans"
         >
-          Developing seamless Web3 solutions with precision, performance, and purpose 
+          I build modern websites and product experiences that feel polished, fast, and conversion-ready, while bringing strong EVM and Solidity expertise to Web3 products when needed.
           <span className="block mt-4 italic text-[var(--text-primary)]">
             "To see how much of a footprint I can leave behind on Earth before I leave."
           </span>

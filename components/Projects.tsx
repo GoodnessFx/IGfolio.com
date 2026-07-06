@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
-import { projects, Project } from "../data/projects";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { otherProjects, Project, websiteProjects, web3Projects } from "../data/projects";
 
 const ProjectCard = ({ 
   project, 
@@ -9,13 +9,19 @@ const ProjectCard = ({
   project: Project; 
   index: number 
 }) => {
+  const href = project.liveUrl || project.githubUrl || "#";
+  const hasExternalTarget = href !== "#";
+
   return (
-    <motion.div
+    <motion.a
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl overflow-hidden transition-all duration-300 hover:border-[rgba(255,255,255,0.15)] hover:-translate-y-1 shadow-sm"
+      href={href}
+      target={hasExternalTarget ? "_blank" : undefined}
+      rel={hasExternalTarget ? "noopener noreferrer" : undefined}
+      className="group relative block bg-[var(--bg-card)] border border-[var(--border-card)] rounded-xl overflow-hidden transition-all duration-300 hover:border-[rgba(255,255,255,0.15)] hover:-translate-y-1 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
     >
       {/* Gradient Thumbnail */}
       <div 
@@ -25,23 +31,27 @@ const ProjectCard = ({
       
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-lg font-bold text-white font-space-grotesk group-hover:text-[var(--accent)] transition-colors">
-            {project.name}
-          </h3>
-          <div className="flex gap-3">
-            <a href={project.githubUrl || "#"} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-white transition-colors">
-              <Github size={18} />
-            </a>
-            <a href={project.liveUrl || "#"} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-white transition-colors">
-              <ExternalLink size={18} />
-            </a>
+          <div>
+            <h3 className="text-lg font-bold text-white font-space-grotesk group-hover:text-[var(--accent)] transition-colors">
+              {project.name}
+            </h3>
+            <p className="mt-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-[var(--text-dim)] font-dm-sans">
+              <ExternalLink size={12} />
+              {project.liveUrl ? "Live Site" : "Project Link"}
+            </p>
           </div>
+          <ArrowUpRight size={18} className="text-[var(--text-dim)] transition-colors duration-300 group-hover:text-[var(--accent)]" />
         </div>
 
-        <p className="text-sm text-[var(--text-secondary)] mb-6 font-dm-sans leading-relaxed min-h-[40px]">
+        <p className="text-sm text-[var(--text-secondary)] mb-6 font-dm-sans leading-relaxed min-h-[72px]">
           {project.desc}
         </p>
 
+        <div className="mb-3">
+          <span className="text-[11px] uppercase tracking-[0.14em] text-[var(--text-dim)] font-dm-sans">
+            Tech Stack
+          </span>
+        </div>
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag: string) => (
             <span key={tag} className="tag-pill text-[10px]">
@@ -50,9 +60,34 @@ const ProjectCard = ({
           ))}
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };
+
+const ProjectGroup = ({
+  title,
+  intro,
+  projects,
+  offset = 0,
+}: {
+  title: string;
+  intro: string;
+  projects: Project[];
+  offset?: number;
+}) => (
+  <div className="space-y-8">
+    <div className="max-w-3xl">
+      <h3 className="text-2xl md:text-3xl font-bold font-space-grotesk text-white">{title}</h3>
+      <p className="mt-3 text-[15px] leading-relaxed text-[var(--text-secondary)] font-dm-sans">{intro}</p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, i) => (
+        <ProjectCard key={project.name} project={project} index={offset + i} />
+      ))}
+    </div>
+  </div>
+);
 
 export function Projects() {
   return (
@@ -66,13 +101,32 @@ export function Projects() {
           className="mb-16"
         >
           <span className="section-label">Projects</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">What I've shipped</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Selected work</h2>
+          <p className="mt-5 max-w-3xl text-[16px] leading-relaxed text-[var(--text-secondary)] font-dm-sans">
+            My website work comes first here, followed by Web3 and smart contract builds, then a few other product experiments.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} />
-          ))}
+        <div className="space-y-20">
+          <ProjectGroup
+            title="Website Development"
+            intro="Client-facing websites and product marketing builds, ordered to highlight commercial web development first."
+            projects={websiteProjects}
+          />
+
+          <ProjectGroup
+            title="Web3 & Smart Contracts"
+            intro="Smart contract and Web3 product work with Solidity, EVM tooling, and full-stack dApp interfaces."
+            projects={web3Projects}
+            offset={websiteProjects.length}
+          />
+
+          <ProjectGroup
+            title="Other Projects"
+            intro="Additional AI, product, and research builds that show range beyond websites and Web3."
+            projects={otherProjects}
+            offset={websiteProjects.length + web3Projects.length}
+          />
         </div>
       </div>
     </section>

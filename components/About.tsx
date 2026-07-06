@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export function About() {
   const coreAttributes = [
     "Security-first engineering mindset",
-    "Ships end-to-end — contract to UI",
+    "Ships end-to-end — websites, products, and smart contracts",
     "Self-directed researcher & fast learner",
     "Systems thinker: Web3 + Finance + Product",
     "Growth-oriented: protocol, product, market",
@@ -32,8 +32,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              I'm a Smart Contract Engineer and Full-Stack Web3 Developer who ships end-to-end — 
-              from zero-day Solidity contracts to production-grade dApp frontends.
+              I'm a website developer and product engineer who builds clean, performant digital experiences end to end, from frontend implementation to launch-ready production delivery.
             </motion.p>
 
             <motion.p
@@ -42,9 +41,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Over the past year I've shipped 7 live projects across DeFi escrow, NFT ticketing, 
-              on-chain AI trading intelligence, cross-border payments, tokenized talent investment, 
-              EVM protocol learning, and AI-adaptive mobile apps.
+              Alongside client-facing websites, I've also shipped Web3 products across DeFi escrow, NFT ticketing, on-chain intelligence, cross-border payments, tokenized investment mechanics, and EVM education.
             </motion.p>
 
             <motion.p
@@ -123,7 +120,7 @@ export function About() {
                     <div className="flex items-center gap-3">
                       <span className="h-[1px] w-8 bg-[var(--accent)]" />
                       <span className="text-[var(--text-secondary)] font-dm-sans text-xs uppercase tracking-wider">
-                        Smart Contract Engineer
+                        Website Developer · Smart Contract Engineer
                       </span>
                     </div>
                   </div>
