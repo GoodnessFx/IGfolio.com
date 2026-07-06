@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Send, CheckCircle2, XCircle, Loader2, Github, Linkedin } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2, XCircle, Loader2, Github, Linkedin, MessageCircle } from "lucide-react";
 
 // X (formerly Twitter) Icon Component
 const XIcon = ({ className }: { className?: string }) => (
@@ -16,48 +16,92 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+type ContactChannel = "whatsapp" | "email";
+
 export function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [deliveryMethod, setDeliveryMethod] = useState<ContactChannel>("whatsapp");
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [lastSubmittedVia, setLastSubmittedVia] = useState<ContactChannel>("whatsapp");
+
+  const whatsappNumber = "2348072027335";
+  const displayWhatsappNumber = "08072027335";
+  const contactEmail = "goodnessiyamah1@gmail.com";
+
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
+  const buildWhatsAppMessage = () =>
+    [
+      "Hello Goodness,",
+      "",
+      `Name: ${name}`,
+      `Email: ${email}`,
+      "",
+      "Message:",
+      message,
+    ].join("\n");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitStatus("idle");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/goodnessiyamah1@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ 
-          name, email, message, 
-          _subject: "New message from IG Portfolio", 
-          _captcha: "false" 
-        }),
-      });
+      if (deliveryMethod === "whatsapp") {
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buildWhatsAppMessage())}`;
+        const whatsappWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
-      if (res.ok) {
+        if (!whatsappWindow) {
+          window.location.href = whatsappUrl;
+        }
+
+        setLastSubmittedVia("whatsapp");
         setSubmitStatus("success");
-        setName("");
-        setEmail("");
-        setMessage("");
+        resetForm();
+        setTimeout(() => setSubmitStatus("idle"), 3000);
       } else {
-        setSubmitStatus("error");
-        setTimeout(() => setSubmitStatus("idle"), 2000);
+        const res = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: "New message from IG Portfolio",
+            _captcha: "false",
+          }),
+        });
+
+        if (res.ok) {
+          setLastSubmittedVia("email");
+          setSubmitStatus("success");
+          resetForm();
+          setTimeout(() => setSubmitStatus("idle"), 3000);
+        } else {
+          setSubmitStatus("error");
+          setTimeout(() => setSubmitStatus("idle"), 2500);
+        }
       }
     } catch {
       setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus("idle"), 2000);
+      setTimeout(() => setSubmitStatus("idle"), 2500);
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/GoodnessFx", label: "GitHub" },
     { icon: XIcon, href: "https://x.com/IGoodnessIyamah", label: "X" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:goodnessiyamah1@gmail.com", label: "Email" },
+    { icon: MessageCircle, href: `https://wa.me/${whatsappNumber}`, label: "WhatsApp" },
+    { icon: Mail, href: `mailto:${contactEmail}`, label: "Email" },
   ];
 
   const roles = [
@@ -95,8 +139,25 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] mb-1">Email Me</p>
-                  <a href="mailto:goodnessiyamah1@gmail.com" className="text-lg font-bold text-white hover:text-[var(--accent)] transition-colors font-space-grotesk">
-                    goodnessiyamah1@gmail.com
+                  <a href={`mailto:${contactEmail}`} className="text-lg font-bold text-white hover:text-[var(--accent)] transition-colors font-space-grotesk">
+                    {contactEmail}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-[var(--bg-card)] border border-[rgba(255,255,255,0.08)] rounded-lg flex items-center justify-center text-white group-hover:border-[var(--accent)] transition-colors">
+                  <MessageCircle size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] mb-1">WhatsApp</p>
+                  <a
+                    href={`https://wa.me/${whatsappNumber}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-bold text-white hover:text-[var(--accent)] transition-colors font-space-grotesk"
+                  >
+                    {displayWhatsappNumber}
                   </a>
                 </div>
               </div>
@@ -184,6 +245,47 @@ export function Contact() {
                 />
               </div>
 
+              <div className="space-y-3">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-dim)] ml-1">Deliver Message To</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label className={`cursor-pointer rounded-lg border px-5 py-4 transition-colors ${deliveryMethod === "whatsapp" ? "border-[var(--accent)] bg-[rgba(255,255,255,0.04)]" : "border-[rgba(255,255,255,0.08)] bg-[var(--bg-primary)]"}`}>
+                    <input
+                      type="radio"
+                      name="deliveryMethod"
+                      value="whatsapp"
+                      checked={deliveryMethod === "whatsapp"}
+                      onChange={() => setDeliveryMethod("whatsapp")}
+                      className="sr-only"
+                    />
+                    <span className="flex items-center gap-3 text-white font-space-grotesk">
+                      <MessageCircle size={18} />
+                      WhatsApp
+                    </span>
+                    <span className="mt-2 block text-sm text-[var(--text-secondary)] font-dm-sans">
+                      Opens a pre-filled WhatsApp message to {displayWhatsappNumber}.
+                    </span>
+                  </label>
+
+                  <label className={`cursor-pointer rounded-lg border px-5 py-4 transition-colors ${deliveryMethod === "email" ? "border-[var(--accent)] bg-[rgba(255,255,255,0.04)]" : "border-[rgba(255,255,255,0.08)] bg-[var(--bg-primary)]"}`}>
+                    <input
+                      type="radio"
+                      name="deliveryMethod"
+                      value="email"
+                      checked={deliveryMethod === "email"}
+                      onChange={() => setDeliveryMethod("email")}
+                      className="sr-only"
+                    />
+                    <span className="flex items-center gap-3 text-white font-space-grotesk">
+                      <Mail size={18} />
+                      Email
+                    </span>
+                    <span className="mt-2 block text-sm text-[var(--text-secondary)] font-dm-sans">
+                      Sends the message directly to {contactEmail}.
+                    </span>
+                  </label>
+                </div>
+              </div>
+
               <div className="relative">
                 <AnimatePresence>
                   {submitStatus === "success" && (
@@ -193,7 +295,9 @@ export function Contact() {
                       exit={{ opacity: 0 }}
                       className="text-sm text-green-500 mb-4 font-dm-sans text-center"
                     >
-                      Your message has been delivered to IG 🚀
+                      {lastSubmittedVia === "whatsapp"
+                        ? "Your message is ready in WhatsApp."
+                        : "Your message has been delivered by email."}
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -214,12 +318,12 @@ export function Contact() {
                   {submitting ? (
                     <>
                       <Loader2 className="animate-spin" size={24} />
-                      Sending...
+                      {deliveryMethod === "whatsapp" ? "Opening WhatsApp..." : "Sending email..."}
                     </>
                   ) : submitStatus === "success" ? (
                     <>
                       <CheckCircle2 size={24} />
-                      ✅ Message sent to IG
+                      {lastSubmittedVia === "whatsapp" ? "WhatsApp ready" : "Message sent"}
                     </>
                   ) : submitStatus === "error" ? (
                     <>
@@ -229,7 +333,7 @@ export function Contact() {
                   ) : (
                     <>
                       <Send size={18} />
-                      Send Message
+                      {deliveryMethod === "whatsapp" ? "Send to WhatsApp" : "Send by Email"}
                     </>
                   )}
                 </button>
