@@ -3,18 +3,36 @@ export interface Project {
   gradient: string;
   desc: string;
   tags: string[];
-  section: "website" | "web3" | "other";
+  section: "website" | "web3" | "other" | "github";
   githubUrl?: string;
   liveUrl?: string;
   chains?: string[];
 }
+
+const githubRepo = (
+  name: string,
+  githubUrl: string,
+  tags: string[],
+  liveUrl?: string,
+): Project => ({
+  name,
+  gradient: "linear-gradient(135deg, #1b2233 0%, #0b1020 100%)",
+  desc: liveUrl
+    ? "Public GitHub repository with a live deployment available for review."
+    : "Public GitHub repository available for code review and implementation walkthroughs.",
+  tags,
+  githubUrl,
+  liveUrl,
+  section: "github",
+});
 
 export const websiteProjects: Project[] = [
   {
     name: "Goodman & Goldsmith",
     gradient: "linear-gradient(135deg, #3b2f24 0%, #15110d 100%)",
     desc: "Procurement and engineering company website built to present services clearly, strengthen credibility, and drive direct enquiries from prospects.",
-    tags: ["React", "JavaScript", "CSS", "Vercel"],
+    tags: ["React", "React Scripts", "Tailwind CSS", "Vercel"],
+    githubUrl: "https://github.com/GoodnessFx/goodman",
     liveUrl: "https://www.goodmanandgoldsmith.com/",
     section: "website",
   },
@@ -61,6 +79,24 @@ export const websiteProjects: Project[] = [
     tags: ["React", "Vite", "Tailwind CSS", "MUI"],
     githubUrl: "https://github.com/GoodnessFx/FastiDent-Dental-Website",
     liveUrl: "https://fasti-dent-dental-website.vercel.app/",
+    section: "website",
+  },
+  {
+    name: "Drip Community",
+    gradient: "linear-gradient(135deg, #10303a 0%, #071419 100%)",
+    desc: "Community-focused product site with a polished frontend, responsive layout, and a live public deployment on Vercel.",
+    tags: ["React", "Vite", "Tailwind CSS", "Supabase"],
+    githubUrl: "https://github.com/GoodnessFx/Drip-Community",
+    liveUrl: "https://drip-community.vercel.app/",
+    section: "website",
+  },
+  {
+    name: "GRACIAS JET",
+    gradient: "linear-gradient(135deg, #17324d 0%, #0a1420 100%)",
+    desc: "A published brand website with a clean visual presentation and responsive frontend suitable for client review.",
+    tags: ["React", "Vite", "Tailwind CSS", "Vercel"],
+    githubUrl: "https://github.com/GoodnessFx/GRACIAS-JET",
+    liveUrl: "https://gracias-jet-ge72.vercel.app/",
     section: "website",
   },
   {
@@ -186,4 +222,51 @@ export const otherProjects: Project[] = [
   },
 ];
 
-export const projects: Project[] = [...websiteProjects, ...web3Projects, ...otherProjects];
+export const githubArchiveProjects: Project[] = [
+  githubRepo("Vibe District", "https://github.com/GoodnessFx/Vibe-District", ["TypeScript", "GitHub"]),
+  githubRepo("DABZ Global", "https://github.com/GoodnessFx/DABZ-GLOBAL", ["HTML", "GitHub"]),
+  githubRepo("Tobi", "https://github.com/GoodnessFx/Tobi", ["Python", "GitHub"]),
+  githubRepo("Grind", "https://github.com/GoodnessFx/Grind", ["TypeScript", "GitHub"]),
+  githubRepo("OUI Market", "https://github.com/GoodnessFx/OUI-Market", ["TypeScript", "GitHub"]),
+  githubRepo("Stamped", "https://github.com/GoodnessFx/Stamped", ["TypeScript", "GitHub"]),
+  githubRepo("Solana Smart Stack", "https://github.com/GoodnessFx/solana-smart-stack", ["TypeScript", "GitHub"]),
+  githubRepo("ChainCodeCamp", "https://github.com/GoodnessFx/ChainCodeCamp", ["HTML", "GitHub"]),
+  githubRepo("Mercy's Kitchen", "https://github.com/GoodnessFx/Mercy-s-Kitchen", ["TypeScript", "GitHub"]),
+  githubRepo("Aura by Temi", "https://github.com/GoodnessFx/Aura-by-Temi", ["TypeScript", "GitHub"]),
+  githubRepo("Recall", "https://github.com/GoodnessFx/Recall", ["TypeScript", "GitHub"]),
+  githubRepo("CryptoSkope", "https://github.com/GoodnessFx/CryptoSkope", ["TypeScript", "GitHub"]),
+  githubRepo("Ghost", "https://github.com/GoodnessFx/Ghost", ["TypeScript", "GitHub"]),
+  githubRepo("Nostalgia", "https://github.com/GoodnessFx/Nostalgia", ["TypeScript", "GitHub"]),
+  githubRepo("LyricFlow", "https://github.com/GoodnessFx/LyricFlow", ["JavaScript", "GitHub"]),
+  githubRepo("Found", "https://github.com/GoodnessFx/Found", ["JavaScript", "GitHub"]),
+  githubRepo("Shipr", "https://github.com/GoodnessFx/Shipr", ["TypeScript", "GitHub"]),
+  githubRepo("GoodnessFx Profile", "https://github.com/GoodnessFx/GoodnessFx", ["GitHub"]),
+  githubRepo("Professor R.I.S Agbede Foundation", "https://github.com/GoodnessFx/Professor-R.I.S-Agbede-Foundation", ["TypeScript", "GitHub"]),
+  githubRepo("GENSIS", "https://github.com/GoodnessFx/GENSIS", ["TypeScript", "GitHub"]),
+  githubRepo("ClientChain", "https://github.com/GoodnessFx/ClientChain", ["TypeScript", "GitHub"]),
+  githubRepo("Ops", "https://github.com/GoodnessFx/Ops", ["TypeScript", "GitHub"]),
+  githubRepo("GENESIS ENGINE", "https://github.com/GoodnessFx/GENESIS-ENGINE", ["TypeScript", "GitHub"]),
+  githubRepo("Nightshift AI", "https://github.com/GoodnessFx/Nightshift-AI", ["TypeScript", "GitHub"]),
+  githubRepo("SYNC", "https://github.com/GoodnessFx/SYNC", ["TypeScript", "GitHub"]),
+  githubRepo("Oya", "https://github.com/GoodnessFx/Oya", ["TypeScript", "GitHub"]),
+  githubRepo("Daniel Adeboye Website", "https://github.com/GoodnessFx/DanielAdeboyeWebsite", ["TypeScript", "GitHub"]),
+  githubRepo("Manifold", "https://github.com/GoodnessFx/Manifold", ["GitHub"]),
+  githubRepo("ChopLife", "https://github.com/GoodnessFx/ChopLife", ["JavaScript", "GitHub"]),
+  githubRepo("Tersor Concept", "https://github.com/GoodnessFx/TersorConcept", ["TypeScript", "GitHub"]),
+  githubRepo("EasyBuild", "https://github.com/GoodnessFx/EasyBuild", ["TypeScript", "GitHub"]),
+  githubRepo("SELLFORCE", "https://github.com/GoodnessFx/SELLFORCE", ["TypeScript", "GitHub"]),
+  githubRepo("GlowUp", "https://github.com/GoodnessFx/GlowUp", ["TypeScript", "GitHub"]),
+  githubRepo("IGFOLIO", "https://github.com/GoodnessFx/IGFOLIO", ["JavaScript", "GitHub"]),
+  githubRepo("DApplify", "https://github.com/GoodnessFx/DApplify", ["TypeScript", "GitHub"]),
+  githubRepo("OffSend", "https://github.com/GoodnessFx/OffSend", ["TypeScript", "GitHub"]),
+  githubRepo("Ruguard", "https://github.com/GoodnessFx/Ruguard", ["TypeScript", "GitHub"]),
+  githubRepo("LinkUp", "https://github.com/GoodnessFx/LinkUp", ["TypeScript", "GitHub"]),
+  githubRepo("ledgex", "https://github.com/GoodnessFx/ledgex", ["HTML", "GitHub"]),
+  githubRepo("alx-zero_day", "https://github.com/GoodnessFx/alx-zero_day", ["Shell", "GitHub"]),
+  githubRepo("alx-pre_course", "https://github.com/GoodnessFx/alx-pre_course", ["Shell", "GitHub"]),
+  githubRepo("alx-low_level_programming", "https://github.com/GoodnessFx/alx-low_level_programming", ["C", "GitHub"]),
+  githubRepo("alx-system_engineering-devops", "https://github.com/GoodnessFx/alx-system_engineering-devops", ["Shell", "GitHub"]),
+  githubRepo("zero_day", "https://github.com/GoodnessFx/zero_day", ["GitHub"]),
+];
+
+export const projects: Project[] = [...websiteProjects, ...web3Projects, ...otherProjects, ...githubArchiveProjects];

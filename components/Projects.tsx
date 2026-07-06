@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
-import { otherProjects, Project, websiteProjects, web3Projects } from "../data/projects";
+import { githubArchiveProjects, otherProjects, Project, websiteProjects, web3Projects } from "../data/projects";
 
 const ProjectCard = ({ 
   project, 
@@ -103,14 +103,14 @@ export function Projects() {
           <span className="section-label">Projects</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Selected work</h2>
           <p className="mt-5 max-w-3xl text-[16px] leading-relaxed text-[var(--text-secondary)] font-dm-sans">
-            My website work comes first here, followed by Web3 and smart contract builds, then a few other product experiments.
+            My website work comes first here, followed by Web3 and smart contract builds, then the rest of my public GitHub work.
           </p>
         </motion.div>
 
         <div className="space-y-20">
           <ProjectGroup
             title="Website Development"
-            intro="Client-facing websites and product marketing builds, ordered to highlight commercial web development first."
+            intro="Client-facing websites and product marketing builds, including the projects I have already published on Vercel."
             projects={websiteProjects}
           />
 
@@ -126,6 +126,13 @@ export function Projects() {
             intro="Additional AI, product, and research builds that show range beyond websites and Web3."
             projects={otherProjects}
             offset={websiteProjects.length + web3Projects.length}
+          />
+
+          <ProjectGroup
+            title="GitHub Projects"
+            intro="The rest of my public GitHub repositories, included here so clients and collaborators can browse more of my implementation work directly."
+            projects={githubArchiveProjects}
+            offset={websiteProjects.length + web3Projects.length + otherProjects.length}
           />
         </div>
       </div>
