@@ -1,133 +1,127 @@
 import { motion } from "framer-motion";
+import { FileText } from "lucide-react";
+
+const stats = [
+  { value: "4+",  label: "Years"       },
+  { value: "15+", label: "Projects"    },
+  { value: "3",   label: "Core stacks" },
+  { value: "5",   label: "Build types" },
+];
 
 export function About() {
-  const coreAttributes = [
-    "Security-first engineering mindset",
-    "Ships end-to-end — websites, products, and smart contracts",
-    "Self-directed researcher & fast learner",
-    "Systems thinker: Web3 + Finance + Product",
-    "Growth-oriented: protocol, product, market",
-  ];
-
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-[var(--bg-primary)]">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <span className="section-label">About Me</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Turning ideas into reality</h2>
-        </motion.div>
+    <section id="about" className="py-28 bg-[var(--bg-secondary)] relative overflow-hidden">
+      {/* Ambient glow */}
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at top right, rgba(207,97,40,0.05) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* Left Column - Text */}
-          <div className="lg:col-span-7 space-y-6 text-[var(--text-secondary)] text-[17px] leading-relaxed font-dm-sans">
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              I'm a website developer and product engineer who builds clean, performant digital experiences end to end, from frontend implementation to launch-ready production delivery.
-            </motion.p>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              Alongside client-facing websites, I've also shipped Web3 products across DeFi escrow, NFT ticketing, on-chain intelligence, cross-border payments, tokenized investment mechanics, and EVM education.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              My first principle is security. CEI patterns, reentrancy guards, ZK verification layers, 
-              and formal audit trails aren't afterthoughts — they're the foundation.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              Currently deepening expertise in DeFi Protocol Security, MEV, Layer 2 infrastructure 
-              (Base, Arbitrum, ZK rollups), and AI Agent systems that operate autonomously on-chain.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-[var(--text-primary)] font-medium"
-            >
-              I don't just build features. I build systems that work, protocols that hold, 
-              and products that survive contact with reality.
-            </motion.p>
-
-            {/* Core Attributes */}
-            <div className="pt-8 space-y-4">
-              <span className="section-label">Core Attributes</span>
-              <ul className="space-y-3">
-                {coreAttributes.map((attr, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
-                    className="flex items-center gap-3 text-[var(--text-primary)] font-medium font-dm-sans"
-                  >
-                    <span className="text-[var(--accent)] font-bold">›</span>
-                    {attr}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right Column - Image Card */}
+          {/* ── Left: stat block + quote ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-5"
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
           >
-            <div className="relative group">
-              <div className="relative bg-[var(--bg-card)] border border-[rgba(255,255,255,0.08)] rounded-[16px] overflow-hidden transition-all duration-500 hover:-translate-y-1">
-                <div className="h-[500px] w-full relative">
-                  <img
-                    src="/images/ig.png"
-                    alt="Goodness Iyamah"
-                    className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                  />
+            {/* Stat grid */}
+            <div className="grid grid-cols-2 gap-px bg-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden">
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="bg-[var(--bg-secondary)] hover:bg-[var(--bg-card)] transition-colors duration-300 p-7 flex flex-col gap-1"
+                >
+                  <span className="font-space-grotesk font-bold text-white text-4xl leading-none text-[var(--accent)]">
+                    {s.value}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-[var(--text-dim)] font-dm-sans mt-2">
+                    {s.label}
+                  </span>
                 </div>
-                
-                <div className="p-8 relative bg-[var(--bg-card)] border-t border-[rgba(255,255,255,0.08)]">
-                  <div className="space-y-1">
-                    <h3 className="text-xl font-bold text-white font-space-grotesk">Goodness Iyamah</h3>
-                    <div className="flex items-center gap-3">
-                      <span className="h-[1px] w-8 bg-[var(--accent)]" />
-                      <span className="text-[var(--text-secondary)] font-dm-sans text-xs uppercase tracking-wider">
-                        Website Developer · Smart Contract Engineer
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Quote */}
+            <div className="glass-card rounded-2xl p-8">
+              <p className="font-space-grotesk font-bold text-white text-xl md:text-2xl leading-[1.35]">
+                "I build for the end result — working software in the hands of real users, not just impressive demos."
+              </p>
+              <div className="mt-6 h-px w-12 bg-[var(--accent)] opacity-60" />
+            </div>
+
+            {/* CV link */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost inline-flex"
+            >
+              <FileText size={16} />
+              View CV
+            </a>
+          </motion.div>
+
+          {/* ── Right: bio ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-8"
+          >
+            <div>
+              <span className="section-label">About Me</span>
+              <h2
+                className="font-space-grotesk font-bold text-white leading-[1.1] mb-6"
+                style={{ fontSize: "clamp(32px, 4.5vw, 52px)" }}
+              >
+                I'm IG — full-stack developer and Web3 builder.
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-[var(--text-secondary)] font-dm-sans text-[16px] leading-relaxed">
+              <p>
+                I'm a full-stack developer and smart contract engineer based in Lagos, Nigeria. I build across the full product surface — React frontends, Node/Hono APIs, Supabase backends, and Solidity contracts deployed on EVM chains.
+              </p>
+              <p>
+                My work spans websites, SaaS products, e-commerce storefronts, and Web3 protocols — connected by the same discipline: clean architecture, product thinking, and shipping things real users actually touch.
+              </p>
+              <p>
+                I'm also the founder of <span className="text-white font-medium">Growth Network</span>, where I work on connecting builders with resources and opportunities across Africa's tech ecosystem.
+              </p>
+              <p className="text-[var(--text-primary)] font-medium">
+                I think in systems. I care about the quality of what ships, not just the speed of what gets pushed.
+              </p>
+            </div>
+
+            {/* Attribute pills */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {[
+                "Systems thinker",
+                "Security-first",
+                "Product-minded",
+                "Web3-native",
+                "Lagos, Nigeria",
+                "Remote-ready",
+              ].map((attr) => (
+                <span
+                  key={attr}
+                  className="px-4 py-1.5 rounded-full border border-[rgba(255,255,255,0.07)] bg-[rgba(255,255,255,0.02)] text-xs font-dm-sans text-[var(--text-secondary)] hover:border-[var(--accent-border)] hover:text-[var(--accent)] transition-all duration-200"
+                >
+                  {attr}
+                </span>
+              ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

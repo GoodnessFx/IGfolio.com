@@ -3,40 +3,36 @@ import { motion } from "framer-motion";
 
 type Props = {
   onComplete?: () => void;
-  duration?: number; // milliseconds
+  duration?: number;
 };
 
-export default function Splash({ onComplete, duration = 2500 }: Props) {
-  const [progress, setProgress] = useState(0);
-  const [loadingText, setLoadingText] = useState("Initializing systems...");
+const steps = [
+  { threshold: 0,   text: "Initializing…"         },
+  { threshold: 25,  text: "Loading stack…"         },
+  { threshold: 50,  text: "Compiling contracts…"   },
+  { threshold: 75,  text: "Connecting chains…"     },
+  { threshold: 95,  text: "Ready."                 },
+];
 
-  const loadingSteps = [
-    { threshold: 0, text: "Initializing systems..." },
-    { threshold: 20, text: "Loading neural network layers..." },
-    { threshold: 40, text: "Fetching smart contract protocols..." },
-    { threshold: 60, text: "Optimizing Web3 interface..." },
-    { threshold: 80, text: "Finalizing security audit..." },
-    { threshold: 100, text: "System Ready." },
-  ];
+export default function Splash({ onComplete, duration = 2200 }: Props) {
+  const [progress, setProgress] = useState(0);
+  const [text, setText] = useState(steps[0].text);
 
   useEffect(() => {
     const start = Date.now();
-    const interval = 30;
     const id = setInterval(() => {
       const elapsed = Date.now() - start;
       const pct = Math.min(100, Math.round((elapsed / duration) * 100));
       setProgress(pct);
 
-      const currentStep = [...loadingSteps].reverse().find((step) => pct >= step.threshold);
-      if (currentStep) setLoadingText(currentStep.text);
+      const current = [...steps].reverse().find((s) => pct >= s.threshold);
+      if (current) setText(current.text);
 
       if (pct >= 100) {
         clearInterval(id);
-        setTimeout(() => {
-          if (onComplete) onComplete();
-        }, 500);
+        setTimeout(() => onComplete?.(), 400);
       }
-    }, interval);
+    }, 24);
     return () => clearInterval(id);
   }, [duration, onComplete]);
 
@@ -44,59 +40,60 @@ export default function Splash({ onComplete, duration = 2500 }: Props) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1E1C1A] text-[#F2F0ED] font-dm-sans"
+      transition={{ duration: 0.65, ease: "easeInOut" }}
+      className="fixed inset-0 z-[200] flex items-center justify-center"
+      style={{ background: "#1E1C1A" }}
     >
-      <div className="absolute inset-0 z-0 bg-noise pointer-events-none opacity-[0.03]" />
-      
-      <div className="w-full max-w-md px-8 relative z-10">
-        <div className="space-y-8">
-          {/* Logo / Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-3xl font-bold font-space-grotesk tracking-tight mb-2">
-              IG<span className="text-[#CF6128]">folio</span>
-            </h1>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-[#9A9490]">
-              Production Grade Web3 Development
-            </div>
-          </motion.div>
+      <div className="w-full max-w-xs px-8 space-y-8">
 
-          {/* Progress Section */}
-          <div className="space-y-4">
-            <div className="flex justify-between items-end">
-              <div className="text-[11px] font-mono text-[#CF6128] animate-pulse">
-                {loadingText}
-              </div>
-              <div className="text-[11px] font-mono text-[#9A9490]">
-                {progress}%
-              </div>
-            </div>
+        {/* Wordmark */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center space-y-2"
+        >
+          <h1 className="font-space-grotesk font-bold text-4xl tracking-tight" style={{ color: "#CF6128" }}>
+            IG
+          </h1>
+          <p className="text-[10px] font-jetbrains uppercase tracking-[0.2em] text-[var(--text-dim)]">
+            Full Stack Dev · Web3 · Smart Contracts
+          </p>
+        </motion.div>
 
-            <div className="relative h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
-              <motion.div
-                className="absolute left-0 top-0 h-full bg-[#CF6128]"
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.1 }}
-              />
-            </div>
+        {/* Progress */}
+        <div className="space-y-3">
+          <div className="flex justify-between items-center">
+            <span className="text-[11px] font-jetbrains text-[var(--accent)] tabular-nums">
+              {text}
+            </span>
+            <span className="text-[11px] font-jetbrains text-[var(--text-dim)] tabular-nums">
+              {progress}%
+            </span>
           </div>
 
-          {/* Terminal Footer */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
-            transition={{ delay: 0.5 }}
-            className="text-[9px] font-mono text-[#5A5652] text-center"
-          >
-            &copy; 2026 GOODNESS IYAMAH. ALL RIGHTS RESERVED.
-          </motion.div>
+          <div className="relative h-px w-full bg-[rgba(255,255,255,0.06)] rounded-full overflow-hidden">
+            <motion.div
+              className="absolute left-0 top-0 h-full rounded-full"
+              style={{
+                background: "linear-gradient(90deg, #CF6128 0%, #E07840 100%)",
+              }}
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.08 }}
+            />
+          </div>
         </div>
+
+        {/* Footer */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.35 }}
+          transition={{ delay: 0.4 }}
+          className="text-[9px] font-jetbrains text-[var(--text-dim)] text-center"
+        >
+          © 2026 GOODNESS IYAMAH
+        </motion.p>
       </div>
     </motion.div>
   );

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CF6128"/>
+      <stop offset="100%" stop-color="#E07840"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242220"/>
+      <stop offset="100%" stop-color="#1A1917"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="22%" cy="50%" r="38%">
+      <stop offset="0%" stop-color="#CF6128" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#CF6128" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="2" y="2" width="1196" height="626" fill="none"
+        stroke="rgba(207,97,40,0.12)" stroke-width="4"/>
+
+  <!-- IG monogram -->
+  <rect x="200" y="165" width="48" height="300" rx="10" fill="url(#og)"/>
+  <path d="M 290 165 A 150 150 0 0 0 290 465"
+        stroke="url(#og)" stroke-width="48" stroke-linecap="round" fill="none"/>
+  <rect x="380" y="282" width="100" height="46" rx="10" fill="url(#og)"/>
+  <rect x="432" y="310" width="48" height="80" rx="10" fill="url(#og)"/>
+
+  <!-- Divider -->
+  <rect x="580" y="165" width="2" height="300" fill="rgba(255,255,255,0.07)"/>
+
+  <!-- Name -->
+  <text x="624" y="298" font-family="'Space Grotesk','Inter',sans-serif"
+        font-size="68" font-weight="700" fill="#F2F0ED" letter-spacing="-2">
+    Goodness Iyamah
+  </text>
+  <!-- Role -->
+  <text x="626" y="362" font-family="'DM Sans','Inter',sans-serif"
+        font-size="26" fill="#9A9490">
+    Full Stack Dev · Web3 · Smart Contracts
+  </text>
+  <!-- Underline -->
+  <rect x="624" y="382" width="400" height="3" rx="2" fill="url(#og)" opacity="0.65"/>
+  <!-- Domain -->
+  <text x="624" y="444" font-family="'JetBrains Mono',monospace"
+        font-size="20" fill="#5A5652" letter-spacing="1">
+    igfolio.com
+  </text>
+</svg>

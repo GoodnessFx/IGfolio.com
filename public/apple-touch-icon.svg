@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <defs>
+    <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CF6128"/>
+      <stop offset="50%" stop-color="#F0A070"/>
+      <stop offset="100%" stop-color="#CF6128"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242220"/>
+      <stop offset="100%" stop-color="#1A1917"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="38" fill="url(#bg)"/>
+  <rect x="2" y="2" width="176" height="176" rx="36" fill="none"
+        stroke="rgba(207,97,40,0.18)" stroke-width="3"/>
+  <!-- I -->
+  <rect x="36" y="38" width="20" height="104" rx="6" fill="url(#og)"/>
+  <!-- G arc -->
+  <path d="M 76 38 A 52 52 0 0 0 76 142"
+        stroke="url(#og)" stroke-width="20"
+        stroke-linecap="round" fill="none"/>
+  <!-- G crossbar -->
+  <rect x="94" y="80" width="44" height="18" rx="5" fill="url(#og)"/>
+  <!-- G descender -->
+  <rect x="118" y="90" width="20" height="34" rx="5" fill="url(#og)"/>
+  <!-- Dot -->
+  <circle cx="46" cy="155" r="7" fill="url(#og)" opacity="0.80"/>
+</svg>

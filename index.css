@@ -7,13 +7,17 @@
   --color-bg-card: #2A2825;
   --color-bg-card-hover: #302E2B;
   --color-bg-terminal: #1A1917;
+
   --color-accent: #CF6128;
   --color-accent-light: #E07840;
   --color-accent-dim: rgba(207, 97, 40, 0.12);
-  --color-accent-border: rgba(207, 97, 40, 0.25);
+  --color-accent-border: rgba(207, 97, 40, 0.28);
+  --color-accent-glow: rgba(207, 97, 40, 0.40);
+
   --color-text-primary: #F2F0ED;
   --color-text-secondary: #9A9490;
   --color-text-dim: #5A5652;
+
   --color-border-card: rgba(255, 255, 255, 0.07);
   --color-border-subtle: rgba(255, 255, 255, 0.05);
 
@@ -28,15 +32,20 @@
   --bg-card: #2A2825;
   --bg-card-hover: #302E2B;
   --bg-terminal: #1A1917;
+
   --accent: #CF6128;
   --accent-light: #E07840;
   --accent-dim: rgba(207, 97, 40, 0.12);
-  --accent-border: rgba(207, 97, 40, 0.25);
+  --accent-border: rgba(207, 97, 40, 0.28);
+  --accent-glow: rgba(207, 97, 40, 0.40);
+
   --text-primary: #F2F0ED;
   --text-secondary: #9A9490;
   --text-dim: #5A5652;
+
   --border-card: rgba(255, 255, 255, 0.07);
   --border-subtle: rgba(255, 255, 255, 0.05);
+
   --font-dm-sans: "DM Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", sans-serif;
   --font-jetbrains: "JetBrains Mono", monospace;
@@ -66,46 +75,128 @@
 }
 
 @layer components {
+  /* ── Navigation glass blur ── */
   .glass-nav {
-    @apply sticky top-0 z-50 backdrop-blur-[12px] bg-[rgba(30,28,26,0.92)] border-b border-[rgba(255,255,255,0.06)];
+    @apply sticky top-0 z-50 border-b border-[rgba(255,255,255,0.06)];
+    background: rgba(30, 28, 26, 0.92);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
   }
 
-  /* Minimal Ghost Buttons */
+  /* ── Glass card (frosted warm) ── */
+  .glass-card {
+    background: rgba(42, 40, 37, 0.70);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+  .glass-card:hover {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 32px rgba(207, 97, 40, 0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+  }
+
+  /* ── Primary CTA ── */
+  .btn-primary {
+    @apply px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300 active:scale-95 flex items-center gap-2;
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(207, 97, 40, 0.30);
+  }
+  .btn-primary:hover {
+    background: var(--accent-light);
+    box-shadow: 0 0 32px rgba(207, 97, 40, 0.50);
+    transform: translateY(-1px);
+  }
+
+  /* ── Ghost button ── */
   .btn-ghost {
-    @apply px-8 py-4 border border-[rgba(255,255,255,0.12)] text-[var(--text-primary)] font-bold rounded-full transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 flex items-center gap-2;
+    @apply px-7 py-3.5 border border-[rgba(255,255,255,0.12)] text-[var(--text-primary)] font-bold text-sm rounded-full transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 flex items-center gap-2;
   }
 
+  /* ── Section label ── */
   .section-label {
-    @apply text-[var(--accent)] font-dm-sans text-[11px] tracking-[0.15em] uppercase mb-4 block;
+    @apply text-[var(--accent)] font-dm-sans text-[11px] tracking-[0.16em] uppercase mb-4 block;
   }
 
+  /* ── Terminal card ── */
   .terminal-card {
-    @apply bg-[var(--bg-terminal)] border border-[rgba(255,255,255,0.06)] border-t-2 border-t-[var(--accent)] rounded-lg overflow-hidden font-mono text-[13px];
+    @apply bg-[var(--bg-terminal)] border border-[rgba(255,255,255,0.06)] border-t-2 border-t-[var(--accent)] rounded-lg overflow-hidden;
+    font-family: var(--font-jetbrains);
+    font-size: 13px;
   }
 
+  /* ── Tech pill ── */
   .tag-pill {
-    @apply px-3 py-1 rounded-full text-xs font-mono border border-[var(--border-subtle)] bg-transparent text-[var(--text-secondary)];
+    @apply px-3 py-1 rounded-full text-xs border border-[var(--border-subtle)] bg-transparent text-[var(--text-secondary)] transition-all duration-200;
+    font-family: var(--font-jetbrains);
+  }
+  .tag-pill:hover {
+    border-color: var(--accent-border);
+    color: var(--accent-light);
+  }
+
+  /* ── Contact row ── */
+  .contact-row {
+    @apply flex items-center justify-between px-6 py-5 rounded-xl border border-[rgba(255,255,255,0.06)] transition-all duration-300;
+    background: rgba(42, 40, 37, 0.50);
+  }
+  .contact-row:hover {
+    border-color: var(--accent-border);
+    background: rgba(207, 97, 40, 0.04);
   }
 }
 
-/* Custom Utilities */
+/* ── Background noise overlay ── */
 @utility bg-noise {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/baseFilter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   opacity: 0.02;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* Hide scrollbar but keep functionality */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+/* ── Accent text utility ── */
+.accent-text {
+  color: var(--accent);
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+/* ── Scrollbar ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Marquee scroll ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* ── Glass prism shimmer on nav logo ── */
+@keyframes prism-shift {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+.logo-prism {
+  background: linear-gradient(
+    120deg,
+    #CF6128 0%,
+    #F0A070 30%,
+    #CF6128 50%,
+    #E07840 75%,
+    #CF6128 100%
+  );
+  background-size: 200% 200%;
+  animation: prism-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
