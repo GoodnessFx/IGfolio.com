@@ -1,11 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <radialGradient id="g" cx="32" cy="32" r="30">
-      <stop offset="0" stop-color="#2dd4bf"/>
-      <stop offset="1" stop-color="#0ea5e9"/>
-    </radialGradient>
+    <linearGradient id="og" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CF6128"/>
+      <stop offset="50%" stop-color="#F0A070"/>
+      <stop offset="100%" stop-color="#CF6128"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242220"/>
+      <stop offset="100%" stop-color="#1A1917"/>
+    </linearGradient>
   </defs>
-  <circle cx="32" cy="32" r="30" fill="url(#g)"/>
-  <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>
-  <text x="32" y="40" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#0b1326">IG</text>
+
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Inner border -->
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none"
+        stroke="rgba(207,97,40,0.18)" stroke-width="1.5"/>
+
+  <!-- I — vertical stem -->
+  <rect x="13" y="14" width="7" height="36" rx="2.5" fill="url(#og)"/>
+
+  <!-- G — outer arc (left+top+bottom, open right) -->
+  <path d="M 27 14 A 18 18 0 0 0 27 50"
+        stroke="url(#og)" stroke-width="7"
+        stroke-linecap="round" fill="none"/>
+
+  <!-- G — horizontal crossbar -->
+  <rect x="33" y="29" width="14" height="6" rx="2" fill="url(#og)"/>
+  <!-- G — descender from crossbar -->
+  <rect x="41" y="32" width="6" height="11" rx="2" fill="url(#og)"/>
+
+  <!-- Accent dot below I -->
+  <circle cx="16.5" cy="55" r="2.5" fill="url(#og)" opacity="0.80"/>
 </svg>
