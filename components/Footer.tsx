@@ -31,7 +31,7 @@ const connectLinks = [
   { name: "WhatsApp", href: "https://wa.me/2348072027335"       },
   { name: "Direct Call", href: "tel:+2348072027335"            },
   { name: "X",        href: "https://x.com/IGoodnessIyamah",   icon: XIcon        },
-  { name: "LinkedIn", href: "https://linkedin.com/in/{{LINKEDIN}}", icon: LinkedInIcon },
+  { name: "LinkedIn", href: "https://linkedin.com/in/goodnessiyamah", icon: LinkedInIcon },
   { name: "GitHub",   href: "https://github.com/GoodnessFx",   icon: GitHubIcon   },
 ];
 
@@ -64,14 +64,14 @@ export function Footer() {
               IG
             </button>
             <p className="text-[var(--text-secondary)] font-dm-sans text-sm leading-relaxed">
-              Full-stack developer and Web3 builder from Lagos, Nigeria, building websites, SaaS products, and smart contracts.
+              Full stack developer and Web3 builder from Lagos, Nigeria, building websites, SaaS products, and smart contracts.
             </p>
             {/* Social icons row */}
             <div className="flex items-center gap-3 pt-2">
               {[
                 { href: "https://x.com/IGoodnessIyamah", Icon: XIcon,        label: "X"        },
                 { href: "https://github.com/GoodnessFx",  Icon: GitHubIcon,   label: "GitHub"   },
-                { href: "https://linkedin.com/in/{{LINKEDIN}}", Icon: LinkedInIcon, label: "LinkedIn" },
+                { href: "https://linkedin.com/in/goodnessiyamah", Icon: LinkedInIcon, label: "LinkedIn" },
               ].map(({ href, Icon, label }) => (
                 <a
                   key={label}
@@ -144,7 +144,7 @@ export function Footer() {
             © 2026 Goodness Iyamah. All rights reserved.
           </p>
           <p className="text-xs text-[var(--text-dim)] font-dm-sans text-center">
-            Full-stack execution. Product thinking. Web3-native.
+            Full stack execution. Product thinking. Web3 native.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

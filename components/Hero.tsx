@@ -332,7 +332,7 @@ function TextContent() {
         className="font-dm-sans text-[var(--text-secondary)] mb-10"
         style={{ fontSize: "clamp(14px, 1.8vw, 17px)", lineHeight: "1.72", maxWidth: "480px" }}
       >
-        Websites, apps, SaaS products, and smart contracts —
+        Websites, apps, SaaS products, and smart contracts,
         built clean, shipped fast, and designed to work for real people.
       </motion.p>
 

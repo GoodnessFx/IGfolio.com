@@ -52,7 +52,7 @@ export function About() {
             {/* Quote */}
             <div className="glass-card rounded-2xl p-8">
               <p className="font-space-grotesk font-bold text-white text-xl md:text-2xl leading-[1.35]">
-                "I build for the end result — working software in the hands of real users, not just impressive demos."
+                "I build for the end result, working software in the hands of real users, not just impressive demos."
               </p>
               <div className="mt-6 h-px w-12 bg-[var(--accent)] opacity-60" />
             </div>
@@ -83,16 +83,16 @@ export function About() {
                 className="font-space-grotesk font-bold text-white leading-[1.1] mb-6"
                 style={{ fontSize: "clamp(32px, 4.5vw, 52px)" }}
               >
-                I'm IG — full-stack developer and Web3 builder.
+                I'm IG, full stack developer and Web3 builder.
               </h2>
             </div>
 
             <div className="space-y-5 text-[var(--text-secondary)] font-dm-sans text-[16px] leading-relaxed">
               <p>
-                I'm a full-stack developer and smart contract engineer based in Lagos, Nigeria. I build across the full product surface — React frontends, Node/Hono APIs, Supabase backends, and Solidity contracts deployed on EVM chains.
+                I'm a full stack developer and smart contract engineer based in Lagos, Nigeria. I build across the full product surface, React frontends, Node/Hono APIs, Supabase backends, and Solidity contracts deployed on EVM chains.
               </p>
               <p>
-                My work spans websites, SaaS products, e-commerce storefronts, and Web3 protocols — connected by the same discipline: clean architecture, product thinking, and shipping things real users actually touch.
+                My work spans websites, SaaS products, e-commerce storefronts, and Web3 protocols, connected by the same discipline: clean architecture, product thinking, and shipping things real users actually touch.
               </p>
               <p>
                 I'm also the founder of <span className="text-white font-medium">Growth Network</span>, where I work on connecting builders with resources and opportunities across Africa's tech ecosystem.
@@ -106,9 +106,9 @@ export function About() {
             <div className="flex flex-wrap gap-2 pt-2">
               {[
                 "Systems thinker",
-                "Security-first",
-                "Product-minded",
-                "Web3-native",
+                "Security first",
+                "Product minded",
+                "Web3 native",
                 "Lagos, Nigeria",
                 "Remote-ready",
               ].map((attr) => (

@@ -90,7 +90,7 @@ export function Navigation() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.10em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(255,255,255,0.05)] transition-all duration-200 font-dm-sans"
+                className="nav-link px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.10em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(255,255,255,0.05)] transition-all duration-200 font-dm-sans"
               >
                 {link.name}
               </button>
@@ -161,7 +161,7 @@ export function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
                 onClick={() => scrollToSection(link.id)}
-                className="font-space-grotesk font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+                className="nav-link font-space-grotesk font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
                 style={{ fontSize: "clamp(28px, 8vw, 42px)" }}
               >
                 {link.name}

@@ -47,8 +47,8 @@ export function Skills() {
     },
     {
       icon: ShieldCheck,
-      title: "Security-First Engineering",
-      tags: ["CEI Pattern", "ReentrancyGuard", "RBAC", "ZK Verification", "Oracle Safety", "Audit-Ready"],
+      title: "Security First Engineering",
+      tags: ["CEI Pattern", "ReentrancyGuard", "RBAC", "ZK Verification", "Oracle Safety", "Audit Ready"],
     },
     {
       icon: Monitor,

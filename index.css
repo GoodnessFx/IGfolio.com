@@ -137,6 +137,31 @@
     color: var(--accent-light);
   }
 
+  /* ── Nav link underline indicator ── */
+  .nav-link {
+    position: relative;
+    overflow: visible;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    bottom: 6px;
+    height: 2px;
+    width: 56%;
+    background: var(--accent);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 180ms ease, opacity 180ms ease;
+    opacity: 0.0;
+  }
+  .nav-link:hover::after,
+  .nav-link:focus::after {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+  }
+
   /* ── Contact row ── */
   .contact-row {
     @apply flex items-center justify-between px-6 py-5 rounded-xl border border-[rgba(255,255,255,0.06)] transition-all duration-300;

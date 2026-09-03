@@ -82,7 +82,7 @@ export function Competencies() {
           className="mb-16"
         >
           <span className="section-label">Smart Contracts</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Security-First. Gas-Optimized. Audit-Ready.</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white">Security First. Gas Optimized. Audit Ready.</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

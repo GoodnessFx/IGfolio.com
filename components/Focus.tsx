@@ -13,19 +13,19 @@ interface FocusTab {
 const tabs: FocusTab[] = [
   {
     id: "fullstack",
-    label: "Full-Stack Product",
-    category: "FULL-STACK PRODUCT",
+    label: "Full Stack Product",
+    category: "FULL STACK PRODUCT",
     headline: "End-to-end products built to scale.",
     description:
-      "From dashboard to database — React frontends, Node/Hono APIs, Supabase backends, and SaaS systems architected to grow past the MVP.",
+      "From dashboard to database, React frontends, Node/Hono APIs, Supabase backends, and SaaS systems architected to grow past the MVP.",
     features: [
       {
         title: "Product depth",
         desc: "Auth flows, role-based access, real-time updates, and dashboards that handle real data.",
       },
       {
-        title: "Full-stack range",
-        desc: "React + TypeScript UI, Hono/Node API layer, Supabase/PostgreSQL — owned end-to-end.",
+        title: "Full stack range",
+        desc: "React + TypeScript UI, Hono/Node API layer, Supabase/PostgreSQL, owned end-to-end.",
       },
       {
         title: "SaaS architecture",
@@ -39,7 +39,7 @@ const tabs: FocusTab[] = [
     category: "BUSINESS WEBSITE",
     headline: "Sites that convert, not just look good.",
     description:
-      "Marketing sites, company pages, and landing experiences built for clarity, speed, and SEO — not just aesthetics.",
+      "Marketing sites, company pages, and landing experiences built for clarity, speed, and SEO, not just aesthetics.",
     features: [
       {
         title: "Brand clarity",
@@ -51,7 +51,7 @@ const tabs: FocusTab[] = [
       },
       {
         title: "Conversion",
-        desc: "Clear CTAs, trust signals, responsive polish — built around actual business goals.",
+        desc: "Clear CTAs, trust signals, responsive polish, built around actual business goals.",
       },
     ],
   },
@@ -61,7 +61,7 @@ const tabs: FocusTab[] = [
     category: "WEB3 · SMART CONTRACT",
     headline: "On-chain systems that hold under pressure.",
     description:
-      "Solidity contracts written security-first — CEI patterns, reentrancy guards, audit-ready structure. DApp frontends with wagmi/viem.",
+      "Solidity contracts written security first, CEI patterns, reentrancy guards, audit ready structure. DApp frontends with wagmi/viem.",
     features: [
       {
         title: "Contract security",
@@ -83,7 +83,7 @@ const tabs: FocusTab[] = [
     category: "E-COMMERCE",
     headline: "Storefronts built to move product.",
     description:
-      "Custom storefronts and payment integrations — Paystack, Flutterwave, WhatsApp-first ordering, and cart experiences for Nigerian and global markets.",
+      "Custom storefronts and payment integrations, Paystack, Flutterwave, WhatsApp first ordering, and cart experiences for Nigerian and global markets.",
     features: [
       {
         title: "Payment rails",

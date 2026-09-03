@@ -89,7 +89,7 @@ export function Process() {
           <span className="text-[var(--accent)]">Real execution.</span>
           </h2>
           <p className="text-[var(--text-secondary)] font-dm-sans text-[16px] max-w-xl leading-relaxed">
-            Full-stack and Web3 foundations — structured into a clear build process that reduces surprises and ships on time.
+            Full stack and Web3 foundations, structured into a clear build process that reduces surprises and ships on time.
           </p>
         </motion.div>
 

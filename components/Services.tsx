@@ -5,7 +5,7 @@ const services = [
   {
     num: "01",
     title: "Web Development",
-    desc: "Custom websites, marketing pages, and dashboards. React, Vite, TypeScript, Tailwind — clean component architecture and performance-first delivery.",
+    desc: "Custom websites, marketing pages, and dashboards. React, Vite, TypeScript, Tailwind, clean component architecture and performance first delivery.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vercel"],
   },
   {
@@ -17,19 +17,19 @@ const services = [
   {
     num: "03",
     title: "Smart Contract & Web3 Dev",
-    desc: "Solidity contracts written security-first with Foundry tooling. ERC standards, UUPS proxies, DeFi mechanics, and full DApp frontends with wagmi/viem integration.",
+    desc: "Solidity contracts written security first with Foundry tooling. ERC standards, UUPS proxies, DeFi mechanics, and full DApp frontends with wagmi/viem integration.",
     tags: ["Solidity", "Foundry", "OpenZeppelin", "wagmi", "viem", "Base"],
   },
   {
     num: "04",
     title: "E-commerce",
-    desc: "Custom storefronts and payment integrations for Nigerian and global markets — Paystack, Flutterwave, WhatsApp ordering flows, and cart experiences that convert.",
+    desc: "Custom storefronts and payment integrations for Nigerian and global markets, Paystack, Flutterwave, WhatsApp ordering flows, and cart experiences that convert.",
     tags: ["Paystack", "Flutterwave", "React", "Storefront", "WhatsApp Commerce"],
   },
   {
     num: "05",
     title: "SEO & Technical Foundations",
-    desc: "Semantic HTML structure, metadata strategy, page architecture, Core Web Vitals, and performance audits — the technical foundations that make sites discoverable.",
+    desc: "Semantic HTML structure, metadata strategy, page architecture, Core Web Vitals, and performance audits, the technical foundations that make sites discoverable.",
     tags: ["Semantic HTML", "Meta Strategy", "Core Web Vitals", "Page Architecture"],
   },
 ];
@@ -103,14 +103,14 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: services.length * 0.08 }}
-            className="rounded-2xl p-7 flex flex-col items-start justify-between gap-6 border border-dashed border-[rgba(207,97,40,0.30)] bg-[rgba(207,97,40,0.03)] hover:border-[rgba(207,97,40,0.50)] transition-all duration-300 group"
+            className="rounded-2xl p-7 flex flex-col items-start justify-between gap-6 border border-solid border-[rgba(207,97,40,0.30)] bg-[rgba(207,97,40,0.03)] hover:border-[rgba(207,97,40,0.50)] transition-all duration-300 group"
           >
             <div className="space-y-3">
               <p className="font-space-grotesk font-bold text-white text-xl leading-tight">
                 Have something specific in mind?
               </p>
               <p className="text-[var(--text-secondary)] font-dm-sans text-[14px] leading-relaxed">
-                If your project doesn't fit a category — let's talk. Most interesting work doesn't.
+                If your project doesn't fit a category, let's talk. Most interesting work doesn't.
               </p>
             </div>
             <button

@@ -65,8 +65,8 @@ const contactRows = [
   },
   {
     label: "LinkedIn",
-    value: "{{LINKEDIN}}",
-    href: "https://linkedin.com/in/{{LINKEDIN}}",
+    value: "goodnessiyamah",
+    href: "https://linkedin.com/in/goodnessiyamah",
     icon: LinkedInIcon,
   },
   {
@@ -164,7 +164,7 @@ function ContactForm() {
             initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
             className="text-sm text-green-400 font-dm-sans flex items-center gap-2"
           >
-            <CheckCircle2 size={15} /> Message sent — I'll reply shortly.
+            <CheckCircle2 size={15} /> Message sent, I'll reply shortly.
           </motion.p>
         )}
         {status === "error" && (
@@ -224,7 +224,7 @@ export function Contact() {
             Ready to build something serious?
           </h2>
           <p className="text-[var(--text-secondary)] font-dm-sans text-[16px] max-w-lg">
-            Available for full-stack roles, Web3 collaborations, and serious builds.
+            Available for full stack roles, Web3 collaborations, and serious builds.
           </p>
         </motion.div>
 
