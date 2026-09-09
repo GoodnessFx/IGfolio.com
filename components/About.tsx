@@ -59,7 +59,7 @@ export function About() {
 
             {/* CV link */}
             <a
-              href="/resume.pdf"
+              href="/resume.html"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost inline-flex"
