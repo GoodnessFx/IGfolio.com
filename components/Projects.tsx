@@ -35,7 +35,7 @@ const featured: FeaturedProject[] = [
     name: "BuySmart Procurement",
     desc: "Client site with growth and social campaign support. Built to present procurement services clearly, support direct enquiry conversion, and maintain a credible digital presence for enterprise outreach.",
     tags: ["React", "Tailwind", "Vercel", "SEO"],
-    isPrivate: true,
+    liveUrl: "https://buysmartprocurement.com/",
   },
   {
     num: "04",

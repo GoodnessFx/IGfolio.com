@@ -64,6 +64,22 @@ export const websiteProjects: Project[] = [
     section: "website",
   },
   {
+    name: "Hamdan Export",
+    gradient: "linear-gradient(135deg, #0b3b2f 0%, #07120e 100%)",
+    desc: "Client export and trading website for Hamdan Export — presenting services and contact pathways.",
+    tags: ["HTML", "CSS", "Responsive"],
+    liveUrl: "http://www.hamdanexport.com/",
+    section: "website",
+  },
+  {
+    name: "PRISA Foundation",
+    gradient: "linear-gradient(135deg, #123044 0%, #061018 100%)",
+    desc: "Nonprofit foundation site for PRISA Foundation — mission, programmes, and donation information.",
+    tags: ["React", "Vite", "Tailwind CSS"],
+    liveUrl: "https://prisafoundation.org/",
+    section: "website",
+  },
+  {
     name: "Molecular Consultancy",
     gradient: "linear-gradient(135deg, #2d3142 0%, #0d1020 100%)",
     desc: "Consultancy website designed to communicate expertise, organize service information, and support professional lead generation.",
