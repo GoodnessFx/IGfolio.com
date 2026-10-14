@@ -17,35 +17,59 @@ const featured: FeaturedProject[] = [
     category: "COMMUNITY · PLATFORM",
     name: "Growth Network",
     desc: "Operating system for small business growth — one platform combining software, design, automation, and operations. Client dashboard with live project tracking, social media scheduling, growth analytics, and CRM. Built on Supabase with row-level security and full multi-tenant isolation.",
-    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "RLS", "OAuth"],
-    liveUrl: "https://github.com/GoodnessFx/Growth-Network",
+    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "OAuth"],
+    liveUrl: "https://growth-network.pxxlspace.cv/",
   },
   {
     num: "02",
     category: "WEB3 · EDUCATION",
     name: "ChainCodeCamp",
-    desc: "Smart contract security education platform — structured path from EVM internals through Solidity mastery, Yul/assembly, Foundry testing, and protocol security. Built for developers who want to ship production-grade on-chain systems, not just pass tutorials.",
-    tags: ["HTML", "JavaScript", "Vercel", "EVM", "Solidity", "Foundry"],
+    desc: "Smart contract security education platform built around a 10-section audit training curriculum, structured after Cyfrin-style, hands-on EVM security teaching. Covers EVM internals, Solidity mastery, Yul/assembly, Foundry testing, and protocol security end to end.",
+    tags: ["Next.js", "Supabase", "MDX", "Solidity", "Foundry"],
     liveUrl: "https://chain-code-camp.vercel.app/",
   },
   {
     num: "03",
-    category: "CLIENT WORK · PROCUREMENT",
+    category: "CLIENT · PROCUREMENT",
     name: "BuySmart Procurement",
-    desc: "Client site with growth and social campaign support. Built to present procurement services clearly, drive direct enquiry conversion, and maintain a credible digital presence for enterprise outreach.",
-    tags: ["React", "Tailwind CSS", "Vercel", "SEO"],
+    desc: "Website and digital growth system for a Lagos procurement and logistics company. Built around a certification and proof-of-work angle that shortened the buyer decision cycle — organic traffic to direct inquiry.",
+    tags: ["React", "Vite", "Tailwind CSS", "SEO"],
     liveUrl: "https://buysmartprocurement.com/",
   },
   {
     num: "04",
     category: "NONPROFIT · DONATION PLATFORM",
     name: "Prof. R.I.S. Agbede Foundation",
-    desc: "Donation platform for a Nigeria-based educational foundation. Paystack for NGN giving, Flutterwave for USD international donations, and crypto wallet integration — built to remove friction from cross-border charitable giving across multiple currencies.",
-    tags: ["React", "TypeScript", "Vite", "Paystack", "Flutterwave", "Crypto Wallet"],
-    liveUrl: "https://professor-r-i-s-agbede-foundation.vercel.app/",
+    desc: "Non-profit website with integrated donation flows across Paystack, Flutterwave, and crypto rails — giving the foundation a single trusted place to receive support from NGN, USD, and crypto donors worldwide.",
+    tags: ["React", "Paystack", "Flutterwave", "Crypto Wallet"],
+    liveUrl: "https://prisafoundation.org/",
   },
   {
     num: "05",
+    category: "CLIENT · EXPORT TRADE",
+    name: "Hamdan Integrated Services",
+    desc: "Production website for an import/export trading company, built to convert organic search traffic into direct buyer inquiries. Clean information architecture, SEO-first structure, and a credibility-first layout.",
+    tags: ["React", "Tailwind CSS", "SEO", "Vercel"],
+    liveUrl: "http://www.hamdanexport.com/",
+  },
+  {
+    num: "06",
+    category: "CLIENT · CORPORATE",
+    name: "Goodman & Goldsmith",
+    desc: "Company website built and deployed end to end — React frontend through hosting and deployment. Clean brand presentation, professional layout, and production-ready delivery.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://www.goodmanandgoldsmith.com/",
+  },
+  {
+    num: "07",
+    category: "WEB3 · BASE L2 · CAMPUS MARKETPLACE",
+    name: "Grind",
+    desc: "On-chain escrow campus gig marketplace on Base L2, with cNGN payments and on-chain reputation via GrindScore and GrindDID smart contracts. Every gig completed builds an immutable work history — a verifiable on-chain resume for Nigerian university students.",
+    tags: ["Solidity", "Base L2", "cNGN", "wagmi", "React", "TypeScript", "Supabase", "Foundry"],
+    liveUrl: "https://grind-server.vercel.app/",
+  },
+  {
+    num: "08",
     category: "E-COMMERCE · FASHION",
     name: "Vibe District",
     desc: "Premium streetwear e-commerce storefront — product showcase, streamlined ordering, and a strong branded shopping experience. Mobile-first, conversion-focused, built for real product movement.",
@@ -53,35 +77,19 @@ const featured: FeaturedProject[] = [
     liveUrl: "https://vibe-district.vercel.app/",
   },
   {
-    num: "06",
-    category: "WEB3 · BASE L2 · CAMPUS MARKETPLACE",
-    name: "Grind",
-    desc: "On-chain gig marketplace for Nigerian university students on Base L2. GrindEscrow locks cNGN until gig completion, GrindScore builds an immutable on-chain reputation from real work history, and GrindDID handles decentralised identity. Live streaming via LiveKit, Paystack fiat on-ramp.",
-    tags: ["Solidity", "Base L2", "cNGN", "wagmi", "React", "Node.js", "Supabase", "LiveKit", "Paystack", "Foundry"],
-    liveUrl: "https://github.com/GoodnessFx/Grind",
-  },
-  {
-    num: "07",
-    category: "BLOCKCHAIN · ANALYTICS · WEB3",
-    name: "CryptoSkope",
-    desc: "Institutional-grade crypto intelligence platform on Next.js 14. Real-time on-chain tracking via ethers.js, whale alert system for large-scale transfers, market sentiment analysis, and a professional portfolio tracker with USD valuations across the Theta Network ecosystem.",
-    tags: ["Next.js 14", "ethers.js", "TypeScript", "TanStack Query", "Tailwind CSS", "Recharts", "shadcn/ui"],
-    liveUrl: "https://github.com/GoodnessFx/CryptoSkope",
-  },
-  {
-    num: "08",
+    num: "09",
     category: "ENTERPRISE · POS SYSTEM",
     name: "OLakanmbe Stores POS",
     desc: "Full wholesale POS system for a multi-branch retail operation. Node/Express/PostgreSQL backend, React frontend, multi-role auth (admin, cashier, manager), tiered pricing engine, and cross-branch sales reporting.",
-    tags: ["React", "Node.js", "Express", "PostgreSQL", "Multi-role Auth", "Reporting"],
+    tags: ["React", "Node.js", "Express", "PostgreSQL", "Multi-role Auth"],
     isPrivate: true,
   },
   {
-    num: "09",
+    num: "10",
     category: "AI · PERSONAL OPERATOR · PWA",
     name: "TOBI",
-    desc: "Personal AI operator with persistent memory — knows your projects, goals, and context across every session without being re-briefed. Multi-tier LLM routing, agentic tool-calling, proactive reminders in your own voice, and a dev mode built for engineers. Ships as a PWA with offline support.",
-    tags: ["React", "TypeScript", "PWA", "ChromaDB", "Claude API", "SQLite", "Vite"],
+    desc: "Personal AI assistant that connects to a user's work and personal life to remember context and actively assist day to day. Developer mode turns it into an in-context coding companion. Persistent memory across sessions, multi-tier LLM routing, and agentic tool-calling.",
+    tags: ["React", "Vite", "Hono", "Supabase", "Claude API", "TypeScript"],
     liveUrl: "https://github.com/GoodnessFx/Tobi",
   },
 ];
@@ -90,13 +98,14 @@ const featured: FeaturedProject[] = [
 function ProjectRow({ project, index }: { project: FeaturedProject; index: number }) {
   const href = project.liveUrl ?? "#";
   const hasLink = !!href && href !== "#" && !project.isPrivate;
+  const isGitHub = href.includes("github.com");
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay: index * 0.05 }}
+      transition={{ duration: 0.55, delay: index * 0.04 }}
       className="group relative"
     >
       <div className="grid grid-cols-1 md:grid-cols-[72px_1fr_auto] gap-y-4 md:gap-x-8 items-start py-10 border-b border-[rgba(255,255,255,0.05)] hover:border-[rgba(207,97,40,0.22)] transition-colors duration-300">
@@ -139,7 +148,7 @@ function ProjectRow({ project, index }: { project: FeaturedProject; index: numbe
               className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors duration-200 text-sm font-dm-sans group/link whitespace-nowrap"
               aria-label={`View ${project.name}`}
             >
-              {href.includes("github.com") ? "View repo" : "View live"}
+              {isGitHub ? "View repo" : "View live"}
               <span className="w-8 h-8 rounded-full border border-[rgba(255,255,255,0.10)] flex items-center justify-center group-hover/link:border-[var(--accent)] group-hover/link:bg-[var(--accent-dim)] transition-all duration-300">
                 <ArrowUpRight size={14} />
               </span>

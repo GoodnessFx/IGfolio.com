@@ -59,26 +59,51 @@ export function Navigation() {
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
             aria-label="Back to top"
-            className="flex items-center gap-2.5 pl-2 select-none shrink-0"
+            className="flex items-center gap-2.5 pl-1 select-none shrink-0"
           >
-            {/* Icon container — matches reference rounded square badge */}
+            {/* IG monogram badge — clean SVG mark */}
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+              className="relative w-9 h-9 rounded-xl flex items-center justify-center shrink-0 overflow-hidden"
               style={{
-                background: "rgba(207,97,40,0.12)",
-                border: "1px solid rgba(207,97,40,0.30)",
+                background: "linear-gradient(135deg, rgba(207,97,40,0.18) 0%, rgba(207,97,40,0.06) 100%)",
+                border: "1px solid rgba(207,97,40,0.35)",
+                boxShadow: "0 0 12px rgba(207,97,40,0.15), inset 0 1px 0 rgba(255,255,255,0.08)",
               }}
             >
-              <span className="logo-prism font-space-grotesk font-bold text-sm tracking-tight leading-none">
-                IG
-              </span>
+              {/* Inline SVG IG mark — clean geometric letterforms */}
+              <svg width="22" height="18" viewBox="0 0 22 18" fill="none" aria-hidden="true">
+                {/* I — clean vertical bar */}
+                <rect x="0" y="0" width="3.5" height="18" rx="1.5" fill="#CF6128"/>
+                {/* G — arc open on right with crossbar */}
+                <path
+                  d="M 8 0 A 9 9 0 0 0 8 18"
+                  stroke="#CF6128"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                {/* G crossbar */}
+                <rect x="12.5" y="7.5" width="7" height="3" rx="1.25" fill="#CF6128"/>
+                {/* G descender */}
+                <rect x="16" y="9.5" width="3.5" height="5.5" rx="1.25" fill="#CF6128"/>
+                {/* Accent dot — fine detail */}
+                <circle cx="1.75" cy="16.5" r="0" fill="#E07840"/>
+              </svg>
+              {/* Prism sheen overlay */}
+              <div
+                className="absolute inset-x-0 top-0 h-px"
+                style={{
+                  background: "linear-gradient(90deg, transparent 0%, rgba(240,160,112,0.7) 50%, transparent 100%)",
+                }}
+              />
             </div>
+
             {/* Wordmark — hide on small screens */}
-            <div className="hidden sm:flex flex-col leading-none">
+            <div className="hidden sm:flex flex-col leading-none gap-0.5">
               <span className="font-space-grotesk font-bold text-[13px] text-[var(--text-primary)] tracking-tight leading-none">
                 Goodness Iyamah
               </span>
-              <span className="text-[9px] font-jetbrains uppercase tracking-[0.14em] text-[var(--text-dim)] mt-0.5">
+              <span className="text-[9px] font-jetbrains uppercase tracking-[0.14em] text-[var(--text-dim)]">
                 Full Stack · Web3
               </span>
             </div>
