@@ -354,7 +354,7 @@ function TextContent() {
         </button>
 
         <a
-          href="/resume.html"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-ghost"
