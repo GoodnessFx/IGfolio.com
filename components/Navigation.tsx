@@ -127,7 +127,7 @@ export function Navigation() {
             {/* CTA button — standardized primary pill */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="hidden md:inline-flex btn-primary btn-sm text-[12px] uppercase tracking-[0.08em]"
+              className="hidden md:inline-flex btn-primary px-5 py-2.5 text-[12px] uppercase tracking-[0.08em]"
             >
               Let's Talk
             </button>

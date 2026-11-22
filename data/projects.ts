@@ -67,7 +67,7 @@ export const topFourProjects: Project[] = [
 export const additionalMainProjects: Project[] = [
   {
     name: "DABZ Global",
-    category: "E-Commerce · Gadgets",
+    category: "E-COMMERCE · GADGETS",
     gradient: "linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 100%)",
     desc: "Conversion-focused gadget storefront built for rapid product discovery, interactive cart flow, and WhatsApp-first checkout for a live retail business.",
     tags: ["React", "Vite", "Tailwind CSS", "WhatsApp Commerce"],
@@ -79,7 +79,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Blindy Choice",
-    category: "Interactive · Decision Flow",
+    category: "INTERACTIVE · DECISION FLOW",
     gradient: "linear-gradient(135deg, #4a1d6d 0%, #1b0a2a 100%)",
     desc: "Interactive recommendation and curated decision engine offering dynamic preference matching, smooth filter flows, and personalized choice selections.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Interactive UI"],
@@ -89,7 +89,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Souledia",
-    category: "Creative Media · Agency",
+    category: "CREATIVE MEDIA · AGENCY",
     gradient: "linear-gradient(135deg, #5c2419 0%, #200a07 100%)",
     desc: "Digital media and creative production studio platform engineered for bold visual storytelling, client portfolio showcases, and high-conversion enquiries.",
     tags: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
@@ -99,7 +99,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Affordable One Stop Cars",
-    category: "Automotive · Marketplace",
+    category: "AUTOMOTIVE · MARKETPLACE",
     gradient: "linear-gradient(135deg, #1b3a5c 0%, #091a2e 100%)",
     desc: "All-in-one automotive marketplace and vehicle inventory platform built for streamlined browsing, instant test-drive scheduling, and direct buyer inquiries.",
     tags: ["React", "TypeScript", "Tailwind CSS", "Automotive Portal"],
@@ -109,7 +109,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Arrisitao App",
-    category: "Mobile App · On-Demand",
+    category: "MOBILE APP · ON-DEMAND",
     gradient: "linear-gradient(135deg, #18283a 0%, #09121a 100%)",
     desc: "Mobile-first on-demand service and lifestyle booking application featuring real-time provider discovery, calendar syncing, and in-app checkout.",
     tags: ["React Native", "TypeScript", "Tailwind CSS", "PWA"],
@@ -119,7 +119,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "EasyOwn",
-    category: "Fintech · Rent-to-Own",
+    category: "FINTECH · RENT-TO-OWN",
     gradient: "linear-gradient(135deg, #2a1f14 0%, #110c07 100%)",
     desc: "Fintech platform for flexible vehicle and asset financing, automating micro-installment tracking, lease agreements, and transparent ownership transfers.",
     tags: ["React", "TypeScript", "Node.js", "Payment Escrow"],
@@ -129,7 +129,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Export Trade Africa",
-    category: "Client · Global Trade",
+    category: "CLIENT · GLOBAL TRADE",
     gradient: "linear-gradient(135deg, #114b3a 0%, #081710 100%)",
     desc: "Trade and commodity platform highlighting agricultural and mineral export opportunities across Africa with clear lead-capture workflows.",
     tags: ["React", "Vite", "Tailwind CSS", "MUI"],
@@ -141,7 +141,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Sahn Plumbing",
-    category: "Client · Emergency Services",
+    category: "CLIENT · EMERGENCY SERVICES",
     gradient: "linear-gradient(135deg, #0d3b66 0%, #071a2c 100%)",
     desc: "Service business website focused on rapid emergency contact, trust-building testimonials, and immediate quotation requests for clients.",
     tags: ["React", "Vite", "Tailwind CSS", "MUI"],
@@ -153,7 +153,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "365 Fashion for Africa",
-    category: "Luxury Fashion · Brand",
+    category: "LUXURY FASHION · BRAND",
     gradient: "linear-gradient(135deg, #5c3520 0%, #1b0f08 100%)",
     desc: "Luxury African fashion brand website built to showcase bespoke collections, runway lookbooks, and high-end editorial brand identity with responsive design.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
@@ -165,7 +165,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "Drip Community",
-    category: "Community · Social Product",
+    category: "COMMUNITY · SOCIAL PRODUCT",
     gradient: "linear-gradient(135deg, #10303a 0%, #071419 100%)",
     desc: "Community-driven product site featuring responsive social feeds, interactive discussion hubs, and real-time Supabase cloud database backend.",
     tags: ["React", "Vite", "Tailwind CSS", "Supabase"],
@@ -177,7 +177,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "VIBRANIUM",
-    category: "Web3 · Autonomous Security",
+    category: "WEB3 · AUTONOMOUS SECURITY",
     gradient: "linear-gradient(135deg, #1e1b4b 0%, #0a0a0a 100%)",
     desc: "Autonomous smart contract guardian monitoring mempools for malicious exploits and executing emergency pauses on vulnerable protocol code.",
     tags: ["Solidity", "Next.js 14", "GPT-4o", "BullMQ", "Prisma"],
@@ -189,7 +189,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "SHERLOCK",
-    category: "AI · Multi-Agent Intelligence",
+    category: "AI · MULTI-AGENT INTELLIGENCE",
     gradient: "linear-gradient(135deg, #0f172a 0%, #020617 100%)",
     desc: "Multi-agent AI platform for market forecasting using Bayesian belief networks, real-time signal processing, and interactive Three.js graph visualization.",
     tags: ["LangGraph", "Claude 3.5", "ChromaDB", "Three.js"],
@@ -200,7 +200,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "LockIn",
-    category: "AI · Mobile Growth & Habit",
+    category: "AI · MOBILE GROWTH & HABIT",
     gradient: "linear-gradient(135deg, #0a1535 0%, #040810 100%)",
     desc: "AI-adaptive mobile performance and personal accountability app featuring dynamic curriculum pacing, habit streaks, and goal-tracking loops.",
     tags: ["React Native", "Expo", "OpenAI API", "Supabase"],
@@ -211,7 +211,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "AnyPay",
-    category: "Web3 · Cross-Border Payments",
+    category: "WEB3 · CROSS-BORDER PAYMENTS",
     gradient: "linear-gradient(135deg, #2d1f08 0%, #120d04 100%)",
     desc: "Universal value routing concept bridging fiat currency, crypto tokens, airtime credits, and mobile money for frictionless cross-border payments.",
     tags: ["React", "Solidity", "Escrow", "Offline-First"],
@@ -223,7 +223,7 @@ export const additionalMainProjects: Project[] = [
   },
   {
     name: "UpNext",
-    category: "Web3 · Tokenized Talent",
+    category: "WEB3 · TOKENIZED TALENT",
     gradient: "linear-gradient(135deg, #1a0d35 0%, #0a0618 100%)",
     desc: "Tokenized talent investment platform engineered around revenue-sharing ERC-721 contracts and AI-assisted performance scoring.",
     tags: ["Solidity", "Polygon", "React", "AI Scoring"],
@@ -297,7 +297,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "GatePass",
-    category: "Web3 · NFT Ticketing",
+    category: "WEB3 · NFT TICKETING",
     gradient: "linear-gradient(135deg, #0d3d2e 0%, #091a14 100%)",
     desc: "Decentralized NFT ticketing system featuring on-chain access validation, wallet-based auth, and integrated Paystack fiat-to-ticket rails.",
     tags: ["Solidity", "ERC-721", "React", "Paystack", "WalletConnect"],
@@ -308,7 +308,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "TrustCore",
-    category: "Web3 · Smart Contract Escrow",
+    category: "WEB3 · SMART CONTRACT ESCROW",
     gradient: "linear-gradient(135deg, #4a1535 0%, #1a0a1a 100%)",
     desc: "Cross-industry multi-chain escrow protocol with zero-knowledge verification workflows and automated milestone dispute resolution.",
     tags: ["Solidity", "ZK", "React", "Supabase", "Hono"],
@@ -318,7 +318,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "K9",
-    category: "Web3 · On-Chain Intelligence",
+    category: "WEB3 · ON-CHAIN INTELLIGENCE",
     gradient: "linear-gradient(135deg, #0d2040 0%, #060e1a 100%)",
     desc: "AI-powered on-chain intelligence platform for smart contract scanning, mempool rug-pull detection, and automated trading signal alerts.",
     tags: ["React", "Viem", "TanStack Query", "Framer Motion"],
@@ -329,7 +329,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "Jeshub International Ltd",
-    category: "Corporate Consulting",
+    category: "CLIENT · CORPORATE CONSULTING",
     gradient: "linear-gradient(135deg, #3b1d5a 0%, #12081d 100%)",
     desc: "Corporate business website designed for institutional branding, transparent service communication, and polished responsive frontend.",
     tags: ["React", "Vite", "Tailwind CSS", "TanStack Start"],
@@ -339,7 +339,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "FastiDent Dental Website",
-    category: "Healthcare · Clinic",
+    category: "HEALTHCARE · CLINICAL PORTAL",
     gradient: "linear-gradient(135deg, #0b4f6c 0%, #051c26 100%)",
     desc: "Modern clinic and healthcare portal with interactive appointment booking, procedure walkthroughs, and accessible responsive design.",
     tags: ["React", "Vite", "Tailwind CSS", "MUI"],
@@ -349,7 +349,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "Aura by Temi",
-    category: "Beauty & Wellness",
+    category: "BEAUTY & WELLNESS · APPOINTMENT",
     gradient: "linear-gradient(135deg, #b47a8f 0%, #321923 100%)",
     desc: "Luxury beauty brand website built for appointment booking, service catalogues, and WhatsApp conversion flow.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
@@ -359,7 +359,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "Mercy's Kitchen",
-    category: "Culinary · Catering",
+    category: "CULINARY · CATERING PORTAL",
     gradient: "linear-gradient(135deg, #6b3e26 0%, #20110a 100%)",
     desc: "Food ordering and catering portal featuring interactive digital menus, responsive mobile flow, and direct WhatsApp enquiry conversion.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
@@ -369,7 +369,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "OLakanmbe Stores POS",
-    category: "Enterprise · Wholesale POS",
+    category: "ENTERPRISE · WHOLESALE POS",
     gradient: "linear-gradient(135deg, #22292f 0%, #0d1217 100%)",
     desc: "Full wholesale and retail POS system for a multi-branch enterprise. Multi-role auth, tiered volume pricing engine, and cross-branch sales analytics.",
     tags: ["React", "Node.js", "Express", "PostgreSQL", "Multi-role Auth"],
@@ -378,7 +378,7 @@ export const secondaryProjects: Project[] = [
   },
   {
     name: "Mr. Money",
-    category: "AI · Trading Automation",
+    category: "AI · TRADING AUTOMATION",
     gradient: "linear-gradient(135deg, #064e3b 0%, #022c22 100%)",
     desc: "Institutional-style AI trading execution engine using computer-use tooling for real-time chart pattern analysis and risk management.",
     tags: ["Claude API", "Playwright", "OANDA", "Bayesian Math"],

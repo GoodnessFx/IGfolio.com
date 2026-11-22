@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 
 const stats = [
-  { value: "4+",  label: "Years"       },
-  { value: "15+", label: "Projects"    },
-  { value: "3",   label: "Core stacks" },
-  { value: "5",   label: "Build types" },
+  { value: "4+", label: "Years" },
+  { value: "15+", label: "Projects" },
+  { value: "3", label: "Core stacks" },
+  { value: "5", label: "Build types" },
 ];
 
 export function About() {
