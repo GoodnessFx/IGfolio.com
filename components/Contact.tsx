@@ -116,7 +116,7 @@ function ContactForm() {
   };
 
   const inputClass =
-    "w-full bg-[var(--bg-primary)] border border-[rgba(255,255,255,0.07)] rounded-xl px-5 py-4 text-white text-sm placeholder:text-[var(--text-dim)] focus:outline-none focus:border-[var(--accent-border)] transition-colors duration-200 font-dm-sans";
+    "w-full bg-[var(--bg-primary)] border border-[var(--border-card)] rounded-xl px-5 py-4 text-white text-sm placeholder:text-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)] focus-visible:ring-2 focus-visible:ring-[var(--accent)] transition-all duration-200 font-dm-sans";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

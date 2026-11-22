@@ -42,7 +42,7 @@ export default function Splash({ onComplete, duration = 2200 }: Props) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.65, ease: "easeInOut" }}
       className="fixed inset-0 z-[200] flex items-center justify-center"
-      style={{ background: "#1E1C1A" }}
+      style={{ background: "var(--bg-primary)" }}
     >
       <div className="w-full max-w-xs px-8 space-y-8">
 
@@ -53,7 +53,7 @@ export default function Splash({ onComplete, duration = 2200 }: Props) {
           transition={{ duration: 0.5 }}
           className="text-center space-y-2"
         >
-          <h1 className="font-space-grotesk font-bold text-4xl tracking-tight" style={{ color: "#CF6128" }}>
+          <h1 className="font-space-grotesk font-bold text-4xl tracking-tight text-[var(--accent)]">
             IG
           </h1>
           <p className="text-[10px] font-jetbrains uppercase tracking-[0.2em] text-[var(--text-dim)]">

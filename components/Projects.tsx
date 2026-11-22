@@ -424,7 +424,7 @@ export function Projects() {
 
                           <div>
                             <div className="flex items-center justify-between gap-3 mb-3">
-                              <span className="text-[11px] font-jetbrains text-[var(--accent)] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--accent-dim)] border border-[rgba(207,97,40,0.2)]">
+                              <span className="badge-accent">
                                 {project.category}
                               </span>
 
@@ -435,7 +435,7 @@ export function Projects() {
                                     Private
                                   </span>
                                 ) : isLive ? (
-                                  <span className="flex items-center gap-1.5 text-[11px] font-dm-sans text-emerald-400">
+                                  <span className="badge-live">
                                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                                     Live Site
                                   </span>
@@ -756,7 +756,7 @@ export function Projects() {
                           href={selectedProject.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-primary py-2.5 px-5 text-xs"
+                          className="btn-primary btn-sm"
                         >
                           <span>Open Live Project</span>
                           <ExternalLink size={14} />
@@ -768,7 +768,7 @@ export function Projects() {
                           href={selectedProject.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-ghost py-2.5 px-5 text-xs"
+                          className="btn-ghost btn-sm"
                         >
                           <Github size={14} />
                           <span>View Repository</span>

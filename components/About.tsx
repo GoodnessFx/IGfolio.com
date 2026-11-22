@@ -81,7 +81,7 @@ export function About() {
               <span className="section-label">About Me</span>
               <h2
                 className="font-space-grotesk font-bold text-white leading-[1.1] mb-6"
-                style={{ fontSize: "clamp(32px, 4.5vw, 52px)" }}
+                style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
               >
                 I'm IG, full stack developer and Web3 builder.
               </h2>

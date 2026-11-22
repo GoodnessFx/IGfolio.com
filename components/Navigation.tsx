@@ -124,30 +124,17 @@ export function Navigation() {
 
           {/* ── CTA + mobile toggle ── */}
           <div className="flex items-center gap-2 shrink-0">
-            {/* CTA button — solid filled pill like reference */}
+            {/* CTA button — standardized primary pill */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="hidden md:flex items-center gap-1.5 px-5 py-2.5 rounded-full font-bold text-[12px] uppercase tracking-[0.08em] transition-all duration-200 active:scale-95"
-              style={{
-                background: "var(--accent)",
-                color: "#fff",
-                boxShadow: "0 0 16px rgba(207,97,40,0.35)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "var(--accent-light)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 24px rgba(207,97,40,0.55)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "var(--accent)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 0 16px rgba(207,97,40,0.35)";
-              }}
+              className="hidden md:inline-flex btn-primary btn-sm text-[12px] uppercase tracking-[0.08em]"
             >
               Let's Talk
             </button>
 
             {/* Mobile hamburger */}
             <button
-              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.10)] text-[var(--text-primary)] hover:border-[var(--accent)] transition-colors"
+              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-[var(--border-card)] text-[var(--text-primary)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -198,8 +185,7 @@ export function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.06 }}
               onClick={() => scrollToSection("contact")}
-              className="mt-4 px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-[0.08em] text-white active:scale-95 transition-all"
-              style={{ background: "var(--accent)", boxShadow: "0 0 20px rgba(207,97,40,0.4)" }}
+              className="mt-4 btn-primary uppercase tracking-[0.08em]"
             >
               Let's Talk
             </motion.button>

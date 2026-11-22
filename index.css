@@ -6,6 +6,7 @@
   --color-bg-secondary: #242220;
   --color-bg-card: #2A2825;
   --color-bg-card-hover: #302E2B;
+  --color-bg-elevated: #161513;
   --color-bg-terminal: #1A1917;
 
   --color-accent: #CF6128;
@@ -14,12 +15,19 @@
   --color-accent-border: rgba(207, 97, 40, 0.28);
   --color-accent-glow: rgba(207, 97, 40, 0.40);
 
+  /* Semantic status tokens */
+  --color-status-success: #34D399;
+  --color-status-error: #F87171;
+  --color-status-warning: #FBBF24;
+
   --color-text-primary: #F2F0ED;
   --color-text-secondary: #9A9490;
   --color-text-dim: #5A5652;
 
-  --color-border-card: rgba(255, 255, 255, 0.07);
+  /* Standardized border tokens */
+  --color-border-card: rgba(255, 255, 255, 0.08);
   --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
 
   --font-dm-sans: "DM Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", sans-serif;
@@ -31,6 +39,7 @@
   --bg-secondary: #242220;
   --bg-card: #2A2825;
   --bg-card-hover: #302E2B;
+  --bg-elevated: #161513;
   --bg-terminal: #1A1917;
 
   --accent: #CF6128;
@@ -39,12 +48,17 @@
   --accent-border: rgba(207, 97, 40, 0.28);
   --accent-glow: rgba(207, 97, 40, 0.40);
 
+  --status-success: #34D399;
+  --status-error: #F87171;
+  --status-warning: #FBBF24;
+
   --text-primary: #F2F0ED;
   --text-secondary: #9A9490;
   --text-dim: #5A5652;
 
-  --border-card: rgba(255, 255, 255, 0.07);
+  --border-card: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.12);
 
   --font-dm-sans: "DM Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", sans-serif;
@@ -54,6 +68,12 @@
 @layer base {
   * {
     @apply scroll-smooth;
+  }
+
+  /* Global keyboard focus ring accessibility standard */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 
   body {
@@ -88,7 +108,7 @@
     background: rgba(42, 40, 37, 0.70);
     backdrop-filter: blur(12px) saturate(1.2);
     -webkit-backdrop-filter: blur(12px) saturate(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--border-card);
     transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   }
   .glass-card:hover {
@@ -99,7 +119,7 @@
 
   /* ── Primary CTA ── */
   .btn-primary {
-    @apply px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300 active:scale-95 flex items-center gap-2;
+    @apply px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300 active:scale-95 inline-flex items-center gap-2 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)];
     background: var(--accent);
     color: #fff;
     box-shadow: 0 0 20px rgba(207, 97, 40, 0.30);
@@ -112,7 +132,12 @@
 
   /* ── Ghost button ── */
   .btn-ghost {
-    @apply px-7 py-3.5 border border-[rgba(255,255,255,0.12)] text-[var(--text-primary)] font-bold text-sm rounded-full transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 flex items-center gap-2;
+    @apply px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-bold text-sm rounded-full transition-all duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 inline-flex items-center gap-2 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)];
+  }
+
+  /* ── Button size modifiers ── */
+  .btn-sm {
+    @apply px-4 py-2 text-xs font-semibold;
   }
 
   /* ── Section label ── */
@@ -135,6 +160,14 @@
   .tag-pill:hover {
     border-color: var(--accent-border);
     color: var(--accent-light);
+  }
+
+  /* ── Badge status pills ── */
+  .badge-accent {
+    @apply text-[11px] font-jetbrains text-[var(--accent)] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--accent-dim)] border border-[var(--accent-border)];
+  }
+  .badge-live {
+    @apply flex items-center gap-1.5 text-[11px] font-dm-sans text-emerald-400;
   }
 
   /* ── Nav link underline indicator ── */

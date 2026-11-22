@@ -83,7 +83,7 @@ export function Process() {
           <span className="section-label">Execution System</span>
           <h2
             className="font-space-grotesk font-bold text-white leading-[1.1] mb-4"
-            style={{ fontSize: "clamp(34px, 5vw, 60px)" }}
+            style={{ fontSize: "clamp(36px, 5vw, 64px)" }}
           >
             Modern stack.{" "}
           <span className="text-[var(--accent)]">Real execution.</span>
